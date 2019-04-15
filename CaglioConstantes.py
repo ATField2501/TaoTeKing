@@ -26,3 +26,8 @@ trigramme['ventBois'] = ventBois
 trigramme['montagne'] = montagne
 trigramme['tonnerre'] = tonnerre
 trigramme['feu'] = feu
+
+trai1 = "  ____   ____"
+trai2 = "  ___________"
+trai3 = "  ____ O ____"
+trai4 = "  _____X_____"
