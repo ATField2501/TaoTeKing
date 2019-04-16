@@ -165,12 +165,15 @@ class Cagliostro():
         for i,element in enumerate(numerik):
             if element == sub2:
                 artefact(i)
-        print('  transformation')
-        print("    En Haut \n    -------")
-        for i,element in enumerate(numerik):
-            if element == sub3:
-                artefact(i)
-        print("    En Bas \n    ------" )
-        for i,element in enumerate(numerik):
-            if element == sub4:
-                artefact(i)
+        if transformation == True:
+            print('  transformation')
+            print("    En Haut \n    -------")
+            for i,element in enumerate(numerik):
+                if element == sub3:
+                    artefact(i)
+            print("    En Bas \n    ------" )
+            for i,element in enumerate(numerik):
+                if element == sub4:
+                    artefact(i)
+        else:
+            print('Aucune Transformation')
