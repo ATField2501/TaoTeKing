@@ -1,5 +1,6 @@
 """ Constantes du programme Caglio-Oracle """
 aleph = False
+transformation = False
 # petit dico
 tao={}
 #Liste des charctère utf des hexagrammes
@@ -20,14 +21,24 @@ eau=["* *","***","* *"]
 trigramme= {}
 trigramme['Ciel'] = ciel
 trigramme['terre'] = terre
-trigramme['eau'] = eau
-trigramme['maraicage'] = maraicage
-trigramme['ventBois'] = ventBois
-trigramme['montagne'] = montagne
-trigramme['tonnerre'] = tonnerre
 trigramme['feu'] = feu
-
-trai1 = "  ____   ____"
-trai2 = "  ___________"
+trigramme['tonnerre'] = tonnerre
+trigramme['montagne'] = montagne
+trigramme['ventBois'] = ventBois
+trigramme['maraicage'] = maraicage
+trigramme['eau'] = eau
+# Chaines de charactères representant les traies
+trai1 = "  ___________"
+trai2 = "  ____   ____"
 trai3 = "  ____ O ____"
 trai4 = "  _____X_____"
+# code de trigrammes
+c=[1,1,1]
+t=[2,2,2]
+f=[1,2,1]
+to=[2,2,1]
+mo=[1,2,2]
+v=[1,1,2]
+ma=[2,1,1]
+e=[2,1,2]
+numerik= [c,t,f,to,mo,v,ma,e]

@@ -6,6 +6,41 @@
 from CaglioConstantes import *
 import random
 
+
+def artefact(i):
+    if i == 0:
+        print('    le Ciel')
+        for e in ciel:
+            print(' '+e)
+    if i == 1:
+        print('    la Terre')
+        for e in terre:
+            print(' '+e)
+    if i == 2:
+        print('    le Feu')
+        for e in feu:
+            print(' '+e)
+    if i == 3:
+        print('   le Tonerre')
+        for e in tonnerre:
+            print(' '+e)
+    if i == 4:
+        print('   la Montagne')
+        for e in montagne:
+            print(' '+e)
+    if i == 5:
+        print(' le Vent, le Bois')
+        for e in ventBois:
+            print(' '+e) 
+    if i == 6:
+        print(' les Maraicages')
+        for e in maraicage:
+            print(' '+e)
+    if i == 7:
+        print('    l Eau')
+        for e in eau:
+            print(' '+e)
+
 class Cagliostro():
     """
     Pour le Plaisiiir!.....
@@ -31,14 +66,16 @@ class Cagliostro():
         """
         Affiche le Tao
         """
-        print(tao)
+        for e,i in tao.items():
+            print(e, i,end='')
+
 
     def hexa(self, indice):
         print(tao[indice])
 
     def tri(self):
         """
-        Methode qui ffiche les trigrammes
+        Methode qui affiche les trigrammes
         """
         for cle, valeur in trigramme.items():
             print(cle+ ':')
@@ -74,16 +111,66 @@ class Cagliostro():
         """
         Methode qui doit tirer au hasard deux trigrames pour construire un hexagramme en tenant compte des traies muables
         """
+        ## Création d'un conteneur pour resultat de l'opération
+        tirage= []
+        transform= []
+        ## tirage
         jet=0
-        while jet < 7:
+        while jet < 6:
             target = random.randint(1,4)
             if target == 1:
-                print(trai1)
+                tirage.append(1)
+                print(str(jet+1)+trai1+' 1')
             if target == 2:
-                print(trai2)
+                tirage.append(2)
+                print(str(jet+1)+trai2+' 2')
             if target == 3:
-                print(trai3)
+                tirage.append(3)
+                transformation = True
+                print(str(jet+1)+trai3+' 3')
             if target == 4:
-                print(trai4)
+                tirage.append(4)
+                transformation = True
+                print(str(jet+1)+trai4+' 4')
             jet += 1
-  
+        print(tirage)   
+        # premier jet
+        tirage1= list(tirage)
+        for i,e in enumerate(tirage):
+            if e == 3:
+                tirage1[i]= 2
+            if e == 4:
+                tirage1[i]= 1
+        print(tirage1)
+        # deuxieme jet
+        tirage2= list(tirage)    
+        for i,e in enumerate(tirage):
+            if e == 3:
+                tirage2[i]= 1
+            if e == 4:
+                tirage2[i]= 2
+        print(tirage2)
+        # Découpage des deux trigrammes
+        sub1= tirage1[:3]
+        sub2= tirage1[3:]
+        sub3= tirage2[:3]
+        sub4= tirage2[3:]
+        print(sub1,sub2)
+        print(sub3,sub4)
+        print("    En Haut \n    -------")
+        for i,element in enumerate(numerik):
+            if element == sub1:
+                artefact(i)
+        print("    En Bas \n    ------" )
+        for i,element in enumerate(numerik):
+            if element == sub2:
+                artefact(i)
+        print('  transformation')
+        print("    En Haut \n    -------")
+        for i,element in enumerate(numerik):
+            if element == sub3:
+                artefact(i)
+        print("    En Bas \n    ------" )
+        for i,element in enumerate(numerik):
+            if element == sub4:
+                artefact(i)
