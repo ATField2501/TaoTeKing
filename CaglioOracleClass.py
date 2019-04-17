@@ -66,8 +66,6 @@ class Cagliostro():
         """
         Affiche le Tao
         """
-        for e,i in tao.items():
-            print(e, i,end='')
         for e,i in taOnumerik.items():
             print(e,i)
 
@@ -170,11 +168,11 @@ class Cagliostro():
                 artefact(i)
         # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
         for e,i in taOnumerik.items():
-            if i == tirage1:
+            if i[0] == tirage1:
                 print(e)
-
+                print('       '+i[1])
         if transformation == True:
-            print("\n  TRANSFORMATION ")
+            print("\n TRANSFORMATION \n")
             print("    En Haut \n    -------")
             for i,element in enumerate(numerik):
                 if element == sub3:
@@ -185,9 +183,11 @@ class Cagliostro():
                     artefact(i)
             # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
             for e,i in taOnumerik.items():
-                if i == tirage2:
+                if i[0] == tirage2:
                     print(e)
-        else:
+                    print('       '+i[1])
+        if transformation == False:
             print('Aucune Transformation')
 
-
+#        for i,e in enumerate(hexagramme):
+#            print(i+1,e+"\n")
