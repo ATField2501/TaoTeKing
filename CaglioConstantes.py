@@ -9,14 +9,14 @@ hexagramme = [u"\u4DC0",u"\u4DC1",u"\u4DC2",u"\u4DC3",u"\u4DC4",u"\u4DC5",u"\u4D
        u"\u4DE0",u"\u4DE1",u"\u4DE2",u"\u4DE3",u"\u4DE4",u"\u4DE5",u"\u4DE6",u"\u4DE7",u"\u4DE8",u"\u4DE9",u"\u4DEA",u"\u4DEB",u"\u4DEC",u"\u4DED",u"\u4DEE",u"\u4DEF",
        u"\u4DF0",u"\u4DF1",u"\u4DF2",u"\u4DF3",u"\u4DF4",u"\u4DF5",u"\u4DF6",u"\u4DF7",u"\u4DF8",u"\u4DF9",u"\u4DFA",u"\u4DFB",u"\u4DFC",u"\u4DFD",u"\u4DFE",u"\u4DFF"]
 # trigramme representer par des listes
-ciel=["***","***","***"]
-terre=["* *","* *","* *"]
-feu=["***","* *","***"]
-tonnerre=["* *","* *","***"]
-montagne=["***","* *","* *"]
-ventBois=["***","***","* *"]
-maraicage=["* *","***","***"]
-eau=["* *","***","* *"]
+ciel=["     ***","     ***","     ***"]
+terre=["     * *","     * *","     * *"]
+feu=["     ***","     * *","     ***"]
+tonnerre=["     * *","     * *","     ***"]
+montagne=["     ***","     * *","     * *"]
+ventBois=["     ***","     ***","     * *"]
+maraicage=["     * *","     ***","     ***"]
+eau=["     * *","     ***","     * *"]
 # Dico des trigrammes avec en cle le nom de l'element et en valeur la liste du trigramme associé
 trigramme= {}
 trigramme['Ciel'] = ciel
@@ -27,12 +27,12 @@ trigramme['montagne'] = montagne
 trigramme['ventBois'] = ventBois
 trigramme['maraicage'] = maraicage
 trigramme['eau'] = eau
-# Chaines de charactères representant les traies
+# Chaines de charactères representant les traies yin, yang, yin/yang, yang/yin
 trai1 = "  ___________"
 trai2 = "  ____   ____"
 trai3 = "  ____ O ____"
 trai4 = "  _____X_____"
-# code de trigrammes
+# codes numériques des trigrammes
 c=[1,1,1]
 t=[2,2,2]
 f=[1,2,1]
@@ -41,4 +41,6 @@ mo=[1,2,2]
 v=[1,1,2]
 ma=[2,1,1]
 e=[2,1,2]
+# Liste des codes numériques
 numerik= [c,t,f,to,mo,v,ma,e]
+

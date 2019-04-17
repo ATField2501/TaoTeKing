@@ -17,7 +17,7 @@ def artefact(i):
         for e in terre:
             print(' '+e)
     if i == 2:
-        print('    le Feu')
+        print('     le Feu')
         for e in feu:
             print(' '+e)
     if i == 3:
@@ -37,7 +37,7 @@ def artefact(i):
         for e in maraicage:
             print(' '+e)
     if i == 7:
-        print('    l Eau')
+        print('     l Eau')
         for e in eau:
             print(' '+e)
 
@@ -157,6 +157,7 @@ class Cagliostro():
         sub4= tirage2[3:]
         print(sub1,sub2)
         print(sub3,sub4)
+        print("\n  ETAT INITIAL ")
         print("    En Haut \n    -------")
         for i,element in enumerate(numerik):
             if element == sub1:
@@ -166,14 +167,16 @@ class Cagliostro():
             if element == sub2:
                 artefact(i)
         if transformation == True:
-            print('  transformation')
+            print("\n  TRANSFORMATION ")
             print("    En Haut \n    -------")
             for i,element in enumerate(numerik):
                 if element == sub3:
                     artefact(i)
-            print("    En Bas \n    ------" )
+            print("     En Bas \n     ------" )
             for i,element in enumerate(numerik):
                 if element == sub4:
                     artefact(i)
         else:
             print('Aucune Transformation')
+
+
