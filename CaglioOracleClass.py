@@ -80,11 +80,24 @@ class Cagliostro():
         """
         Methode qui affiche les trigrammes
         """
+        affichage=[]
         for cle, valeur in trigramme.items():
-            print(cle+ ':')
+#            print(cle+ ':')
+            affichage.append(cle+ ':')
             for e in valeur:
-                print(e)
+#                print(e)
+                 affichage.append(e)
+#        for i,e in enumerate(affichage):
+        print("\n")
+        print('   '+affichage[0]+'   '+affichage[4]+'   '+affichage[8]+'  '+ affichage[12])
+        print(affichage[1]+'  '+affichage[5]+'   '+affichage[9]+'  '+ affichage[13])
+        print(affichage[2]+'  '+affichage[6]+'   '+affichage[10]+'  '+ affichage[14])
+        print(affichage[3]+'  '+affichage[7]+'   '+affichage[11]+'  '+ affichage[15])
 
+        print('   '+affichage[16]+'  '+affichage[20]+'   '+affichage[24]+'  '+ affichage[28])
+        print(affichage[17]+'  '+affichage[21]+'   '+affichage[25]+'  '+ affichage[29])
+        print(affichage[18]+'  '+affichage[22]+'   '+affichage[26]+'  '+ affichage[30])
+        print(affichage[19]+'  '+affichage[23]+'   '+affichage[27]+'  '+ affichage[31])
     def hasard(self):
         """
         Methode qui tire un hexagramme au hasard
