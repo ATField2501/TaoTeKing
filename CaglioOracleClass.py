@@ -157,7 +157,7 @@ class Cagliostro():
         sub4= tirage2[3:]
         print(sub1,sub2)
         print(sub3,sub4)
-        print("\n  ETAT INITIAL ")
+        print("\n  ETAT INITIAL \n")
         print("    En Haut \n    -------")
         for i,element in enumerate(numerik):
             if element == sub1:
@@ -171,6 +171,11 @@ class Cagliostro():
             if i[0] == tirage1:
                 print(e)
                 print('       '+i[1])
+                memoire= i[1]
+        # Recherche de la position
+        for index,e in enumerate(hexagramme):
+            if e == memoire:
+                print(yinyang+ ' ' +oracle[index+1])
         if transformation == True:
             print("\n TRANSFORMATION \n")
             print("    En Haut \n    -------")
@@ -186,8 +191,14 @@ class Cagliostro():
                 if i[0] == tirage2:
                     print(e)
                     print('       '+i[1])
-        if transformation == False:
-            print('Aucune Transformation')
+                    memoire= i[1]
+            # Recherche de la position
+            for index,e in enumerate(hexagramme):
+                if e == memoire:
+                    print(yinyang+ ' ' +oracle[index+1])
+            if transformation == False:
+                print('Aucune Transformation')
+        
 
 #        for i,e in enumerate(hexagramme):
 #            print(i+1,e+"\n")

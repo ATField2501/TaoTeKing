@@ -1,6 +1,7 @@
 """ Constantes du programme Caglio-Oracle """
 aleph = False
 transformation = False
+memoire=0
 yinyang=u"\u262F"
 # petit dico
 tao={}
