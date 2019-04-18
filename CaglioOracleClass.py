@@ -57,7 +57,7 @@ class Cagliostro():
         Prompt d'aide
         """
         print("Caglio-Oracle -l (lister 64 hexagrammes)")
-        print("Caglio-Oracle -o (oracle) -v (verbeux)")
+        print("Caglio-Oracle -o (oracle) * (verbeux)")
         print("Caglio-Oracle -t (lister 8 trigrammes)")
         print("Caglio-Oracle -H 12 (Afficher hexagramme n°12)")
         print("Caglio-Oracle -r (Rivière du Tao)")

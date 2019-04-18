@@ -7,21 +7,19 @@ from CaglioOracleClass import *
 
 import sys
 
-
+## Instance de l'objet Caglio 
+Caglio= Cagliostro()
 
 # Lecture des arguments
 if len(sys.argv) < 2:
     print("-Veuillez spécifier un argument-")
+    Caglio.aide()
 if len(sys.argv) > 1:
    action = sys.argv[1]
 if len(sys.argv) == 3:
    indice = sys.argv[2]
    aleph = True
 
-
-
-## Instance de l'objet Caglio 
-Caglio= Cagliostro()
 
 try:
    ####### Prompt d'aide
