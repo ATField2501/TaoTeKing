@@ -42,7 +42,7 @@ try:
        Caglio.tri()
    ###### Oracle
    if action == '-o':
-       Caglio.oracle()
+       Caglio.oracle(aleph)
    ###### Rivière
    if action == '-r':
        Caglio.riviere()

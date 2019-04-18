@@ -107,7 +107,7 @@ class Cagliostro():
             print(instant+ "\n")
             nb1 += 1
 
-    def oracle(self):
+    def oracle(self, aleph):
         """
         Methode qui doit tirer au hasard deux trigrames pour construire un hexagramme en tenant compte des traies muables
         """
@@ -133,7 +133,6 @@ class Cagliostro():
                 transformation = True
                 print(str(jet+1)+trai4+' 4')
             jet += 1
-        print(tirage)   
         # premier jet
         tirage1= list(tirage)
         for i,e in enumerate(tirage):
@@ -141,7 +140,6 @@ class Cagliostro():
                 tirage1[i]= 2
             if e == 4:
                 tirage1[i]= 1
-        print(tirage1)
         # deuxieme jet
         tirage2= list(tirage)    
         for i,e in enumerate(tirage):
@@ -149,14 +147,18 @@ class Cagliostro():
                 tirage2[i]= 1
             if e == 4:
                 tirage2[i]= 2
-        print(tirage2)
         # Découpage des deux trigrammes
         sub1= tirage1[:3]
         sub2= tirage1[3:]
         sub3= tirage2[:3]
         sub4= tirage2[3:]
-        print(sub1,sub2)
-        print(sub3,sub4)
+        # Affichage uniquement en mode verbeux
+        if aleph == True:
+            print(tirage)   
+            print(tirage1)
+            print(tirage2)
+            print(sub1,sub2)
+            print(sub3,sub4)
         print("\n  ETAT INITIAL \n")
         print("    En Haut \n    -------")
         for i,element in enumerate(numerik):
