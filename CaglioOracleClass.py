@@ -57,7 +57,7 @@ class Cagliostro():
         Prompt d'aide
         """
         print("Caglio-Oracle -l (lister 64 hexagrammes)")
-        print("Caglio-Oracle -o (oracle)")
+        print("Caglio-Oracle -o (oracle) -v (verbeux)")
         print("Caglio-Oracle -t (lister 8 trigrammes)")
         print("Caglio-Oracle -H 12 (Afficher hexagramme n°12)")
         print("Caglio-Oracle -r (Rivière du Tao)")
@@ -67,7 +67,7 @@ class Cagliostro():
         Affiche le Tao
         """
         for e,i in taOnumerik.items():
-            print(e,i)
+            print(e,i[1])
 
 
     def hexa(self, indice):

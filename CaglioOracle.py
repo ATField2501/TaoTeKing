@@ -27,13 +27,9 @@ try:
    ####### Prompt d'aide
    if action == '-h':
        Caglio.aide()
-   else:
-       pass
    ####### Liste hexagramme  
    if action == '-l':
        Caglio.liste()  
-   else:
-       pass
    ####### hexagramme  
    if action == '-H':
       if aleph == True:
@@ -41,22 +37,14 @@ try:
           Caglio.hexa(indice)
       if aleph == False:
           Caglio.hasard() 
-   else:
-       pass
    ####### Trigramme  
    if action == '-t':
        Caglio.tri()
-   else:
-       pass
    ###### Oracle
    if action == '-o':
        Caglio.oracle()
-   else:
-       pass 
    ###### Rivière
    if action == '-r':
        Caglio.riviere()
-   else:
-       pass 
 except:
    pass
