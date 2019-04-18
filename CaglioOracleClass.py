@@ -71,7 +71,10 @@ class Cagliostro():
 
 
     def hexa(self, indice):
-        print(tao[indice])
+        try:
+            print(tao[indice])
+        except KeyError:
+            print("Il existe 64 hexagrammes, spécifiez un nombre cohérent")
 
     def tri(self):
         """
