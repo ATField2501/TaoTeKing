@@ -7,39 +7,41 @@ from CaglioConstantes import *
 import random
 
 
-def artefact(i):
+def artefact(i,presentation):
     if i == 0:
-        print('    le Ciel')
+        presentation.append('   le Ciel')
         for e in ciel:
-            print(' '+e)
+            presentation.append(' '+e)
     if i == 1:
-        print('    la Terre')
+        presentation.append(' la Terre')
         for e in terre:
-            print(' '+e)
+            presentation.append(' '+e)
     if i == 2:
-        print('     le Feu')
+        presentation.append('   le Feu')
         for e in feu:
-            print(' '+e)
+            presentation.append(' '+e)
     if i == 3:
-        print('   le Tonerre')
+        presentation.append(' le Tonerre')
         for e in tonnerre:
-            print(' '+e)
+            presentation.append(' '+e)
     if i == 4:
-        print('   la Montagne')
+        presentation.append('la Montagne')
         for e in montagne:
-            print(' '+e)
+            presentation.append(' '+e)
     if i == 5:
-        print(' le Vent, le Bois')
+        presentation.append('le Vent/le Bois')
         for e in ventBois:
-            print(' '+e) 
+            presentation.append(' '+e)
     if i == 6:
-        print(' les Maraicages')
+        presentation.append('les Maraicages')
         for e in maraicage:
-            print(' '+e)
+            presentation.append(' '+e)
     if i == 7:
-        print('     l Eau')
+        presentation.append('  l Eau')
         for e in eau:
-            print(' '+e)
+            presentation.append(' '+e)
+
+
 
 class Cagliostro():
     """
@@ -69,7 +71,6 @@ class Cagliostro():
         for e,i in taOnumerik.items():
             print(e,i[1])
 
-
     def hexa(self, indice):
         try:
             print(tao[indice])
@@ -82,13 +83,9 @@ class Cagliostro():
         """
         affichage=[]
         for cle, valeur in trigramme.items():
-#            print(cle+ ':')
             affichage.append(cle+ ':')
             for e in valeur:
-#                print(e)
                  affichage.append(e)
-#        for i,e in enumerate(affichage):
-        print("\n")
         print('   '+affichage[0]+'   '+affichage[4]+'   '+affichage[8]+'  '+ affichage[12])
         print(affichage[1]+'  '+affichage[5]+'   '+affichage[9]+'  '+ affichage[13])
         print(affichage[2]+'  '+affichage[6]+'   '+affichage[10]+'  '+ affichage[14])
@@ -98,6 +95,7 @@ class Cagliostro():
         print(affichage[17]+'  '+affichage[21]+'   '+affichage[25]+'  '+ affichage[29])
         print(affichage[18]+'  '+affichage[22]+'   '+affichage[26]+'  '+ affichage[30])
         print(affichage[19]+'  '+affichage[23]+'   '+affichage[27]+'  '+ affichage[31])
+
     def hasard(self):
         """
         Methode qui tire un hexagramme au hasard
@@ -136,18 +134,18 @@ class Cagliostro():
             target = random.randint(1,4)
             if target == 1:
                 tirage.append(1)
-                print(str(jet+1)+trai1+' 1')
+                print('      '+str(jet+1)+trai1+' 1')
             if target == 2:
                 tirage.append(2)
-                print(str(jet+1)+trai2+' 2')
+                print('      '+str(jet+1)+trai2+' 2')
             if target == 3:
                 tirage.append(3)
                 transformation = True
-                print(str(jet+1)+trai3+' 3')
+                print('      '+str(jet+1)+trai3+' 3')
             if target == 4:
                 tirage.append(4)
                 transformation = True
-                print(str(jet+1)+trai4+' 4')
+                print('      '+str(jet+1)+trai4+' 4')
             jet += 1
         # premier jet
         tirage1= list(tirage)
@@ -175,48 +173,76 @@ class Cagliostro():
             print(tirage2)
             print(sub1,sub2)
             print(sub3,sub4)
-        print("\n  ETAT INITIAL \n")
-        print("    En Haut \n    -------")
+        #####################################################################
+        print("\n         ETAT INITIAL ")
+        # On créer une liste conteneur pour afficher selon un ordre horizontale
+        presentation= []
+        presentation.append("    En Haut ")
+        presentation.append("    ------- ")
         for i,element in enumerate(numerik):
             if element == sub1:
-                artefact(i)
-        print("    En Bas \n    ------" )
+                artefact(i, presentation)
+
+        presentation.append("    En Bas") 
+        presentation.append("    ------")
         for i,element in enumerate(numerik):
             if element == sub2:
-                artefact(i)
+                artefact(i, presentation)
+
+        # affichage
+        print(presentation[0]+'     '+presentation[6])
+        print(presentation[1]+'     '+presentation[7])
+        print(presentation[2]+'      '+presentation[8])
+        print(presentation[3]+'       '+presentation[9])
+        print(presentation[4]+'       '+presentation[10])
+        print(presentation[5]+'       '+presentation[11])
+
         # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
         for e,i in taOnumerik.items():
             if i[0] == tirage1:
-                print(e)
-                print('       '+i[1])
+                print("\n      "+e)
+                print('              '+i[1]+"\n")
                 memoire= i[1]
         # Recherche de la position
         for index,e in enumerate(hexagramme):
             if e == memoire:
+                print("              "+str(index))
                 print(yinyang+ ' ' +oracle[index+1])
+        #####################################################################
         if transformation == True:
-            print("\n TRANSFORMATION \n")
-            print("    En Haut \n    -------")
+            print("\n        TRANSFORMATION ")
+            # je vide la liste pour la re-remplire
+            presentation= []
+            presentation.append("    En Haut ")
+            presentation.append("    ------- ")
             for i,element in enumerate(numerik):
                 if element == sub3:
-                    artefact(i)
-            print("     En Bas \n     ------" )
+                    artefact(i, presentation)
+            presentation.append("    En Bas" )
+            presentation.append("    ------")
             for i,element in enumerate(numerik):
                 if element == sub4:
-                    artefact(i)
+                    artefact(i, presentation)
+            # Affichage
+            print(presentation[0]+'     '+presentation[6])
+            print(presentation[1]+'     '+presentation[7])
+            print(presentation[2]+'       '+presentation[8])
+            print(presentation[3]+'       '+presentation[9])
+            print(presentation[4]+'       '+presentation[10])
+            print(presentation[5]+'       '+presentation[11])
+
+
             # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
             for e,i in taOnumerik.items():
                 if i[0] == tirage2:
-                    print(e)
-                    print('       '+i[1])
+                    print("\n      "+e)
+                    print('              '+i[1]+"\n")
                     memoire= i[1]
             # Recherche de la position
             for index,e in enumerate(hexagramme):
                 if e == memoire:
+                    print("              "+str(index))
                     print(yinyang+ ' ' +oracle[index+1])
-            if transformation == False:
-                print('Aucune Transformation')
-        
+        if transformation == False:
+             print('Situation Stable\n Aucune Transformation')
 
-#        for i,e in enumerate(hexagramme):
-#            print(i+1,e+"\n")
