@@ -206,7 +206,7 @@ class Cagliostro():
         # Recherche de la position
         for index,e in enumerate(hexagramme):
             if e == memoire:
-                print("              "+str(index))
+                print("              "+str(index+1))
                 print(yinyang+ ' ' +oracle[index+1])
         #####################################################################
         if transformation == True:
@@ -241,7 +241,7 @@ class Cagliostro():
             # Recherche de la position
             for index,e in enumerate(hexagramme):
                 if e == memoire:
-                    print("              "+str(index))
+                    print("              "+str(index+1))
                     print(yinyang+ ' ' +oracle[index+1])
         if transformation == False:
              print('Situation Stable\n Aucune Transformation')
