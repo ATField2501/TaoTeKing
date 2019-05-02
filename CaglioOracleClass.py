@@ -112,7 +112,8 @@ class Cagliostro():
             ligne=[]
             nb =0
             while nb < 8:
-                target = random.randint(0,63)
+                target = random.randint(1,64)
+
                 ligne.append(tao[str(target)])
                 nb += 1
             instant=""
