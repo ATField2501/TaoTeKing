@@ -73,7 +73,7 @@ class Cagliostro():
 
     def hexa(self, indice):
         try:
-            print(tao[indice])
+            print("{} {}".format(indice,tao[indice]))
         except KeyError:
             print("Il existe 64 hexagrammes, spécifiez un nombre cohérent")
 
@@ -113,7 +113,6 @@ class Cagliostro():
             nb =0
             while nb < 8:
                 target = random.randint(1,64)
-
                 ligne.append(tao[str(target)])
                 nb += 1
             instant=""
