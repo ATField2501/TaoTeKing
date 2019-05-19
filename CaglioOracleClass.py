@@ -3,17 +3,19 @@
 # auteur: <atfield2501@gmail.com>
 # Oracle
 
+from CaglioRiviereTao import *
 from CaglioConstantes import *
+#from CaglioRiviereTao import Caglioview
 import random
-
 
 def artefact(i,presentation):
     if i == 0:
         presentation.append('   le Ciel')
+#        presentation.append(utf_trigramme[0]+"\n")
         for e in ciel:
-            presentation.append(' '+e)
+            presentation.append(' '+e)         
     if i == 1:
-        presentation.append(' la Terre')
+        presentation.append(' la Terre')       
         for e in terre:
             presentation.append(' '+e)
     if i == 2:
@@ -21,27 +23,26 @@ def artefact(i,presentation):
         for e in feu:
             presentation.append(' '+e)
     if i == 3:
-        presentation.append(' le Tonerre')
+        presentation.append(' le Tonerre')        
         for e in tonnerre:
             presentation.append(' '+e)
     if i == 4:
-        presentation.append('la Montagne')
+        presentation.append('la Montagne')        
         for e in montagne:
             presentation.append(' '+e)
     if i == 5:
-        presentation.append('le Vent/le Bois')
+        presentation.append('le Vent/le Bois')       
         for e in ventBois:
-            presentation.append(' '+e)
+            presentation.append(' '+e)       
     if i == 6:
         presentation.append('les Maraicages')
         for e in maraicage:
             presentation.append(' '+e)
     if i == 7:
-        presentation.append('  l Eau')
+        presentation.append('  l Eau')        
         for e in eau:
             presentation.append(' '+e)
-
-
+     
 
 class Cagliostro():
     """
@@ -62,7 +63,7 @@ class Cagliostro():
         print("Caglio-Oracle -o (oracle) * (verbeux)")
         print("Caglio-Oracle -t (lister 8 trigrammes)")
         print("Caglio-Oracle -H 12 (Afficher hexagramme n°12)")
-        print("Caglio-Oracle -r (Rivière du Tao)")
+        print("Caglio-Oracle -r (Rivière du Tao) * (gui)")
 
     def liste(self):
         """
@@ -81,6 +82,15 @@ class Cagliostro():
         """
         Methode qui affiche les trigrammes
         """
+        print(utf_trigramme[0]+"  le ciel  ")
+        print(utf_trigramme[1]+"  le maraicage/le lac ")
+        print(utf_trigramme[2]+"  le feu ")
+        print(utf_trigramme[3]+"  le tonerre ")
+        print(utf_trigramme[4]+"  le vent/bois  ")
+        print(utf_trigramme[5]+"  l'eau  ")
+        print(utf_trigramme[6]+"  la montagne  ")
+        print(utf_trigramme[7]+"  la terre ")
+       
         affichage=[]
         for cle, valeur in trigramme.items():
             affichage.append(cle+ ':')
@@ -107,6 +117,7 @@ class Cagliostro():
         """
         Rivière du Tao
         """
+        sauvegarde=""
         nb1 = 0
         while nb1 < 8:
             ligne=[]
@@ -119,7 +130,17 @@ class Cagliostro():
             for e in ligne:
                 instant += ' '+e+' ' 
             print(instant+ "\n")
+            sauvegarde = instant
             nb1 += 1
+         
+
+    def gui_riviere(): 
+        """
+        Rivière du Tao en mode graphique
+        """
+        objet=Caglio_gui()
+        
+        
 
     def oracle(self, aleph):
         """
