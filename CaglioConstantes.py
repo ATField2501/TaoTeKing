@@ -10,7 +10,10 @@ hexagramme = [u"\u4DC0",u"\u4DC1",u"\u4DC2",u"\u4DC3",u"\u4DC4",u"\u4DC5",u"\u4D
        u"\u4DD0",u"\u4DD1",u"\u4DD2",u"\u4DD3",u"\u4DD4",u"\u4DD5",u"\u4DD6",u"\u4DD7",u"\u4DD8",u"\u4DD9",u"\u4DDA",u"\u4DDB",u"\u4DDC",u"\u4DDD",u"\u4DDE",u"\u4DDF",
        u"\u4DE0",u"\u4DE1",u"\u4DE2",u"\u4DE3",u"\u4DE4",u"\u4DE5",u"\u4DE6",u"\u4DE7",u"\u4DE8",u"\u4DE9",u"\u4DEA",u"\u4DEB",u"\u4DEC",u"\u4DED",u"\u4DEE",u"\u4DEF",
        u"\u4DF0",u"\u4DF1",u"\u4DF2",u"\u4DF3",u"\u4DF4",u"\u4DF5",u"\u4DF6",u"\u4DF7",u"\u4DF8",u"\u4DF9",u"\u4DFA",u"\u4DFB",u"\u4DFC",u"\u4DFD",u"\u4DFE",u"\u4DFF"]
-# trigramme representer par des listes
+# trigrammes représentés par leur code utf
+utf_trigramme=[u"\u2630", u"\u2631",u"\u2632", u"\u2633",u"\u2634",u"\u2635",u"\u2636", u"\u2637" ]
+
+# trigrammes representés par des listes
 ciel=["     ***","     ***","     ***"]
 terre=["     * *","     * *","     * *"]
 feu=["     ***","     * *","     ***"]
