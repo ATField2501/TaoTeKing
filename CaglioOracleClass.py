@@ -11,37 +11,44 @@ import random
 def artefact(i,presentation):
     if i == 0:
         presentation.append('   le Ciel')
-#        presentation.append(utf_trigramme[0]+"\n")
-        for e in ciel:
-            presentation.append(' '+e)         
+        presentation.append('       '+utf_trigramme[0])
+#        for e in ciel:
+#            presentation.append(' '+e)         
     if i == 1:
-        presentation.append(' la Terre')       
-        for e in terre:
-            presentation.append(' '+e)
+        presentation.append(' la Terre')
+        presentation.append('       '+utf_trigramme[7])
+#        for e in terre:
+#            presentation.append(' '+e)
     if i == 2:
         presentation.append('   le Feu')
-        for e in feu:
-            presentation.append(' '+e)
+        presentation.append('       '+utf_trigramme[2])
+#        for e in feu:
+#            presentation.append(' '+e)
     if i == 3:
-        presentation.append(' le Tonerre')        
-        for e in tonnerre:
-            presentation.append(' '+e)
+        presentation.append(' le Tonerre')
+        presentation.append('       '+utf_trigramme[3])
+#        for e in tonnerre:
+#            presentation.append(' '+e)
     if i == 4:
-        presentation.append('la Montagne')        
-        for e in montagne:
-            presentation.append(' '+e)
+        presentation.append('la Montagne')   
+        presentation.append('       '+utf_trigramme[6])
+#        for e in montagne:
+#            presentation.append(' '+e)
     if i == 5:
-        presentation.append('le Vent/le Bois')       
-        for e in ventBois:
-            presentation.append(' '+e)       
+        presentation.append('le Vent/le Bois')   
+        presentation.append('       '+utf_trigramme[4])
+#        for e in ventBois:
+#            presentation.append(' '+e)       
     if i == 6:
         presentation.append('les Maraicages')
-        for e in maraicage:
-            presentation.append(' '+e)
+        presentation.append('       '+utf_trigramme[1])
+#        for e in maraicage:
+#            presentation.append(' '+e)
     if i == 7:
-        presentation.append('  l Eau')        
-        for e in eau:
-            presentation.append(' '+e)
+        presentation.append('  l Eau')     
+        presentation.append('       '+utf_trigramme[5])
+#        for e in eau:
+#            presentation.append(' '+e)
      
 
 class Cagliostro():
@@ -209,26 +216,24 @@ class Cagliostro():
         for i,element in enumerate(numerik):
             if element == sub2:
                 artefact(i, presentation)
-
+       
         # affichage
-        print(presentation[0]+'     '+presentation[6])
-        print(presentation[1]+'     '+presentation[7])
-        print(presentation[2]+'      '+presentation[8])
-        print(presentation[3]+'       '+presentation[9])
-        print(presentation[4]+'       '+presentation[10])
-        print(presentation[5]+'       '+presentation[11])
+        print(presentation[0]+'     '+presentation[4])
+#        print(presentation[1]+'     '+presentation[5])
+        print(presentation[2]+'         '+presentation[6])        
+        print("\n"+presentation[3]+'       '+presentation[7])
 
         # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
         for e,i in taOnumerik.items():
             if i[0] == tirage1:
-                print("\n      "+e)
-                print('              '+i[1]+"\n")
+                print('              '+i[1])
+                print("\n      "+e+'  '+"\n")
                 memoire= i[1]
         # Recherche de la position
         for index,e in enumerate(hexagramme):
             if e == memoire:
-                print("              "+str(index+1))
-                print(yinyang+ ' ' +oracle[index+1])
+             #   print("              "+str(index+1))
+                print(str(index+1)+ ' ' +oracle[index+1])
         #####################################################################
         if transformation == True:
             print("\n        TRANSFORMATION ")
@@ -244,26 +249,24 @@ class Cagliostro():
             for i,element in enumerate(numerik):
                 if element == sub4:
                     artefact(i, presentation)
-            # Affichage
-            print(presentation[0]+'     '+presentation[6])
-            print(presentation[1]+'     '+presentation[7])
-            print(presentation[2]+'       '+presentation[8])
-            print(presentation[3]+'       '+presentation[9])
-            print(presentation[4]+'       '+presentation[10])
-            print(presentation[5]+'       '+presentation[11])
 
+            # affichage
+            print(presentation[0]+'     '+presentation[4])
+#            print(presentation[1]+'     '+presentation[5])
+            print(presentation[2]+'         '+presentation[6])
+            print("\n"+presentation[3]+'       '+presentation[7])
 
             # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
             for e,i in taOnumerik.items():
                 if i[0] == tirage2:
-                    print("\n      "+e)
-                    print('              '+i[1]+"\n")
+                    print('              '+i[1])
+                    print("\n      "+e+'  '+"\n")
                     memoire= i[1]
             # Recherche de la position
             for index,e in enumerate(hexagramme):
                 if e == memoire:
-                    print("              "+str(index+1))
-                    print(yinyang+ ' ' +oracle[index+1])
+                 #   print("              "+str(index+1))
+                    print(str(index+1)+ ' ' +oracle[index+1])
         if transformation == False:
              print('Situation Stable\n Aucune Transformation')
 
