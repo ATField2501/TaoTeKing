@@ -1,9 +1,9 @@
 # TaoTeKing
 ---
 auteur: cagliostro atfield2501@gmail.com
----
+
 Oracle Taoïste basé sur les 64 héxagrammes
----
+
 Aucune dépendance 
 ---
 ## Instalation 4 Linux
