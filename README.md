@@ -13,7 +13,7 @@ cd TaoTeKing
 sudo chmod +x CaglioOracle.py
 ```
 ---
-## Utilisaion
+## Utilisation
 ``` shell
 ./CaglioOracle.py 
   -Veuillez spécifier un argument-
