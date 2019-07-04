@@ -3,7 +3,7 @@
 # auteur: <atfield2501@gmail.com>
 # Oracle
 
-from CaglioRiviereTao import *
+#from CaglioRiviereTao import *
 from CaglioConstantes import *
 #from CaglioRiviereTao import Caglioview
 import random
