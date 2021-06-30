@@ -7,6 +7,7 @@ from tkinter.font import Font
 
 class Application(tk.Frame):
     visu= "..... test (;,,;)"
+
     ### Affichage de l'ecran
     def __init__(self, master=None):
         super().__init__(master)
@@ -14,6 +15,7 @@ class Application(tk.Frame):
         self.pack()
         self.create_widgets()
         self.creation_canvas()
+        self.creation_label()
 
     def visuel(self, retour):
         print(retour)
@@ -57,15 +59,27 @@ class Application(tk.Frame):
         self.cnv=tk.Canvas(root, width=300, height=400, bg="black")
         self.cnv.pack(padx=50, pady=50)
         font = Font(family='Liberation Serif', size=32)
-        self.cnv.create_text(150 , 105 ,font=font, text="TaoTéKing",fill="red" )
+        textCaglio = tk.StringVar() 
+        textCaglio.set("TaoTéKing")
+        print(textCaglio)
+        self.cnv.create_text(150 , 105 ,font=font, text=textCaglio,fill="red" )
+    
+
+    def creation_label(self):
+        self.tatatext= tk.StringVar()
+        self.tatatext.set(" - oba production - ")
+        self.label = tk.Label(root, textvariable=self.tatatext)
+        self.label.pack(pady=5)
     
     # action des commandes
     def oracle(self):
         print("Au secour!!")
         Caglio.oracle(aleph = True)
+        self.tatatext.set(".: Oracle :.")        
     
     def appel_aide(self):
         Caglio.aide()
+        self.tatatext.set(".: Aide :.")        
 
 
 #        Application.visuel(retour)
@@ -76,14 +90,19 @@ class Application(tk.Frame):
         retour=ff.read()
         print(retour)
         font = Font(family='Liberation Serif', size=30)
-        self.cnv.create_text(65 , 230 ,font=font,text=retour,fill="green" )
+#        self.cnv.create_text(65 , 230 ,font=font,text=retour,fill="green" )
         ff.close()
+#        textCaglio.set(retour)
+        self.tatatext.set(".: Rivière de Tao :.")        
 #        Application.visuel(self.retour)
 
 
     
     def appel_tri(self):
         self.retour=Caglio.tri()
+        self.tatatext.set(".: Liste des Trigrames :.")        
+
+
 
 Caglio= Cagliostro()
 
