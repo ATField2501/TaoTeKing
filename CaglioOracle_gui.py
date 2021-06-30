@@ -29,20 +29,23 @@ class Application(tk.Frame):
         self.hi_there["text"] = "Oracle"
         self.hi_there["command"] = self.oracle
         self.hi_there["fg"] = "green"
+        self.hi_there['bg']='black'
         self.hi_there.grid (column = 0, row = 0)
 
         # Commande Rivière de Tao
         self.riviere = tk.Button(self)
         self.riviere["text"] = "Rivière de Tao"
         self.riviere["command"] = self.appel_tao
-        self.riviere["fg"] = "blue" 
+        self.riviere["fg"] = "green"
+        self.riviere['bg']='black'
         self.riviere.grid (column = 1, row = 0)
         
         # Commande Affichage Trigrammes
         self.trigrame = tk.Button(self)
         self.trigrame["text"] = "Trigrames"
         self.trigrame["command"] = self.appel_tri
-        self.trigrame["fg"] = "cyan" 
+        self.trigrame["fg"] = "green" 
+        self.trigrame['bg']='black'
         self.trigrame.grid (column = 2, row = 0)        
         
         ##### Commande Aide
@@ -50,11 +53,14 @@ class Application(tk.Frame):
         self.hi["text"] = "Aide"
         self.hi["command"] = self.appel_aide 
         self.hi.grid (column = 3, row = 0)
+        self.hi["fg"] = "green"
+        self.hi['bg']='black'
 
         ##### Commande Quitter
-        self.quit = tk.Button(self, text="QUIT", fg="red",
+        self.quit = tk.Button(self, text="QUIT", fg="green",
                               command=self.master.destroy)
         self.quit.grid (column = 4, row = 0)
+        self.quit['bg']='black'
 
     # Création du canvas
     def creation_canvas(self):
@@ -68,9 +74,11 @@ class Application(tk.Frame):
                                         fill="red" )
     def creation_label1(self):
         self.tatatext1= tk.StringVar()
-        self.tatatext1.set(" - oba production - ")
+        self.tatatext1.set(" - TaoTéKing - ")
         self.font = Font(family='Liberation Serif', size=32)
-        self.label = tk.Label(root, textvariable=self.tatatext1 , bg="black", fg="green", font=self.font)
+        self.label = tk.Label(root, textvariable=self.tatatext1 , 
+                bg="black", fg='#00ff3e', font=self.font)
+
         self.label.pack(pady=55)
     
 
@@ -78,6 +86,9 @@ class Application(tk.Frame):
         self.tatatext2= tk.StringVar()
         self.tatatext2.set(" - oba production - ")
         self.label = tk.Label(root, textvariable=self.tatatext2)
+        self.label["fg"] = "yellow" 
+        self.label['bg']='black'
+
         self.label.pack(pady=5)
     
     # action des commandes
@@ -128,5 +139,6 @@ Caglio= Cagliostro()
 
 root = tk.Tk()
 root.title(' - TaoTéKing -')
+root["bg"]="black"
 app = Application(master=root)
 app.mainloop()
