@@ -6,7 +6,7 @@ from CaglioOracleClass import *
 from tkinter.font import Font
 
 class Application(tk.Frame):
-    visu= "..... test (;,,;)"
+    visu= "..:: (;,,;) ::.."
 
     ### Affichage de l'ecran
     def __init__(self, master=None):
@@ -14,8 +14,10 @@ class Application(tk.Frame):
         self.master = master
         self.pack()
         self.create_widgets()
-        self.creation_canvas()
-        self.creation_label()
+#        self.creation_canvas()
+        self.creation_label1()
+        self.creation_label2()
+        
 
     def visuel(self, retour):
         print(retour)
@@ -58,28 +60,44 @@ class Application(tk.Frame):
     def creation_canvas(self):
         self.cnv=tk.Canvas(root, width=300, height=400, bg="black")
         self.cnv.pack(padx=50, pady=50)
-        font = Font(family='Liberation Serif', size=32)
+        self.font = Font(family='Liberation Serif', size=32)
         textCaglio = tk.StringVar() 
         textCaglio.set("TaoTéKing")
-        print(textCaglio)
-        self.cnv.create_text(150 , 105 ,font=font, text=textCaglio,fill="red" )
+        self.cnv.create_text(150 , 105 ,font=self.font,
+                                        text=textCaglio,
+                                        fill="red" )
+    def creation_label1(self):
+        self.tatatext1= tk.StringVar()
+        self.tatatext1.set(" - oba production - ")
+        self.font = Font(family='Liberation Serif', size=32)
+        self.label = tk.Label(root, textvariable=self.tatatext1 , bg="black", fg="green", font=self.font)
+        self.label.pack(pady=55)
     
 
-    def creation_label(self):
-        self.tatatext= tk.StringVar()
-        self.tatatext.set(" - oba production - ")
-        self.label = tk.Label(root, textvariable=self.tatatext)
+    def creation_label2(self):
+        self.tatatext2= tk.StringVar()
+        self.tatatext2.set(" - oba production - ")
+        self.label = tk.Label(root, textvariable=self.tatatext2)
         self.label.pack(pady=5)
     
     # action des commandes
     def oracle(self):
-        print("Au secour!!")
         Caglio.oracle(aleph = True)
-        self.tatatext.set(".: Oracle :.")        
-    
+        ff=open("tmp.tmp","r")
+        retour=ff.read()
+        self.tatatext1.set(retour)
+        # Création fenetre anexe
+        superFenetre = tk.Toplevel(root)
+        self.label=tk.Label(superFenetre, text="TEST!!!!",bg="black", fg="chartreuse")
+        self.label.pack()
+        self.tatatext2.set(".: Oracle :.")        
+        ff.close()
     def appel_aide(self):
         Caglio.aide()
-        self.tatatext.set(".: Aide :.")        
+        self.tatatext2.set(".: Aide :.")        
+        caglioFichier1= open("tmp.tmp","r")
+        retour=caglioFichier1.read()
+        self.tatatext1.set(retour)
 
 
 #        Application.visuel(retour)
@@ -89,18 +107,20 @@ class Application(tk.Frame):
         ff=open("tmp.tmp","r")
         retour=ff.read()
         print(retour)
-        font = Font(family='Liberation Serif', size=30)
+        self.tatatext1.set(retour)
+#        font = Font(family='Liberation Serif', size=30)
 #        self.cnv.create_text(65 , 230 ,font=font,text=retour,fill="green" )
         ff.close()
 #        textCaglio.set(retour)
-        self.tatatext.set(".: Rivière de Tao :.")        
+        self.tatatext2.set(".: Rivière de Tao :.")        
 #        Application.visuel(self.retour)
+        self.after(250,self.appel_tao)
 
 
     
     def appel_tri(self):
         self.retour=Caglio.tri()
-        self.tatatext.set(".: Liste des Trigrames :.")        
+        self.tatatext2.set(".: Liste des Trigrames :.")        
 
 
 

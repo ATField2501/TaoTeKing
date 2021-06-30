@@ -66,11 +66,20 @@ class Cagliostro():
         """
         Prompt d'aide
         """
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         print("Caglio-Oracle -l (lister 64 hexagrammes)")
+        caglioFichier1.write("Caglio-Oracle -l(lister 64 hexagrammes)\n")
         print("Caglio-Oracle -o (oracle) * (verbeux)")
+        caglioFichier1.write("Caglio-Oracle -o (oracle) * (verbeux)\n")
         print("Caglio-Oracle -t (lister 8 trigrammes)")
+        caglioFichier1.write("Caglio-Oracle -t (lister 8 trigrammes)\n")
         print("Caglio-Oracle -H 12 (Afficher hexagramme n°12)")
+        caglioFichier1.write("Caglio-Oracle -H 12 (Afficher hexagramme n°12)\n")
         print("Caglio-Oracle -r (Rivière du Tao) * (gui)")
+        caglioFichier1.write("Caglio-Oracle -H 12 (Afficher hexagramme n°12)\n")
+        caglioFichier1.close()        
 
     def liste(self):
         """
@@ -160,6 +169,9 @@ class Cagliostro():
         Methode qui doit tirer au hasard deux trigrames
         pour construire un hexagramme en tenant compte des traies muables
         """
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         ## Création d'un conteneur pour resultat de l'opération
         tirage= []
         transform= []
@@ -170,17 +182,24 @@ class Cagliostro():
             if target == 1:
                 tirage.append(1)
                 print('      '+str(jet+1)+trai1+' 1')
+                caglioFichier1.write(str(jet+1)+"  ____      ____"+" 1\n")
             if target == 2:
                 tirage.append(2)
                 print('      '+str(jet+1)+trai2+' 2')
+                caglioFichier1.write(str(jet+1)+"  ____     ____"+" 2\n")
+
             if target == 3:
                 tirage.append(3)
                 transformation = True
                 print('      '+str(jet+1)+trai3+' 3')
+                caglioFichier1.write(str(jet+1)+"  ____  O  ____"+" 3\n")
+
             if target == 4:
                 tirage.append(4)
                 transformation = True
                 print('      '+str(jet+1)+trai4+' 4')
+                caglioFichier1.write(str(jet+1)+"  ____  X  ____"+" 4\n")
+            
             jet += 1
         # premier jet
         tirage1= list(tirage)
@@ -203,11 +222,18 @@ class Cagliostro():
         sub4= tirage2[3:]
         # Affichage uniquement en mode verbeux
         if aleph == True:
-            print(tirage)   
+            print(tirage) 
+#            caglioFichier1.write(str(tirage)+"\n")
             print(tirage1)
+#            caglioFichier1.write(str(tirage1)+"\n")
             print(tirage2)
+#            caglioFichier1.write(str(tirage2)+"\n")
             print(sub1,sub2)
+#            caglioFichier1.write(str(sub1))
+#            caglioFichier1.write(str(sub2)+"\n")
             print(sub3,sub4)
+#            caglioFichier1.write(str(sub3))
+#            caglioFichier1.write(str(sub4)+"\n")
         #####################################################################
         print("\n         ETAT INITIAL ")
         # On créer une liste conteneur pour afficher selon un ordre horizontale
