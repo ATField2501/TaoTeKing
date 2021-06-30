@@ -124,6 +124,9 @@ class Cagliostro():
         """
         Rivière du Tao
         """
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         sauvegarde=""
         nb1 = 0
         while nb1 < 8:
@@ -137,8 +140,11 @@ class Cagliostro():
             for e in ligne:
                 instant += ' '+e+' ' 
             print(instant+ "\n")
+            caglioFichier1.write(instant+"\n")
             sauvegarde = instant
             nb1 += 1
+#        caglioFichier1.write(sauvegarde)
+        caglioFichier1.close()
          
 
     def gui_riviere(): 
@@ -151,7 +157,8 @@ class Cagliostro():
 
     def oracle(self, aleph):
         """
-        Methode qui doit tirer au hasard deux trigrames pour construire un hexagramme en tenant compte des traies muables
+        Methode qui doit tirer au hasard deux trigrames
+        pour construire un hexagramme en tenant compte des traies muables
         """
         ## Création d'un conteneur pour resultat de l'opération
         tirage= []
