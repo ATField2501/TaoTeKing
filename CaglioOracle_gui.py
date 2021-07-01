@@ -7,7 +7,7 @@ from tkinter.font import Font
 
 class Application(tk.Frame):
     visu= "..:: (;,,;) ::.."
-
+    indice= '44'
     ### Affichage de l'ecran
     def __init__(self, master=None):
         super().__init__(master)
@@ -48,10 +48,10 @@ class Application(tk.Frame):
         self.trigrame['bg']='black'
         self.trigrame.grid (column = 2, row = 0)        
         
-        ##### Commande Aide
+        ##### Commande Hexagrame
         self.hi = tk.Button(self)
-        self.hi["text"] = "Aide"
-        self.hi["command"] = self.appel_aide 
+        self.hi["text"] = "Hexagrame"
+        self.hi["command"] = self.hexagrame
         self.hi.grid (column = 3, row = 0)
         self.hi["fg"] = "green"
         self.hi['bg']='black'
@@ -61,6 +61,12 @@ class Application(tk.Frame):
                               command=self.master.destroy)
         self.quit.grid (column = 4, row = 0)
         self.quit['bg']='black'
+
+
+
+
+
+
 
     # Création du canvas
     def creation_canvas(self):
@@ -77,9 +83,8 @@ class Application(tk.Frame):
         self.tatatext1.set(" - TaoTéKing - ")
         self.font = Font(family='Liberation Serif', size=32)
         self.label = tk.Label(root, textvariable=self.tatatext1 , 
-                bg="black", fg='#00ff3e', font=self.font)
-
-        self.label.pack(pady=55)
+                bg="black", fg='#00ff3e', font=self.font )
+        self.label.pack(pady=55,fill='x',)
     
 
     def creation_label2(self):
@@ -88,10 +93,19 @@ class Application(tk.Frame):
         self.label = tk.Label(root, textvariable=self.tatatext2)
         self.label["fg"] = "yellow" 
         self.label['bg']='black'
-
         self.label.pack(pady=5)
     
-    # action des commandes
+    def creation_label3(self,*args):
+        indice=args[0]
+        self.tatatext2= tk.StringVar()
+        self.tatatext2.set(indice)
+        self.label = tk.Label(root, textvariable=self.tatatext2)
+        self.label["fg"] = "yellow" 
+        self.label['bg']='black'
+        self.label.pack(pady=5)    
+    
+    
+    ######################## action des commandes
     def oracle(self):
         Caglio.oracle(aleph = True)
         ff=open("tmp.tmp","r")
@@ -99,13 +113,46 @@ class Application(tk.Frame):
         self.tatatext1.set(retour)
         # Création fenetre anexe
         superFenetre = tk.Toplevel(root)
-        self.label=tk.Label(superFenetre, text="TEST!!!!",bg="black", fg="chartreuse")
+        self.label=tk.Label(superFenetre, text="TEST!!!!",
+                bg="black", fg="chartreuse")
         self.label.pack()
         self.tatatext2.set(".: Oracle :.")        
         ff.close()
-    def appel_aide(self):
-        Caglio.aide()
-        self.tatatext2.set(".: Aide :.")        
+
+    ## methode apppelé par les 64 boutons pour pouvoir renvoyer
+    #  une valeur à la variable 'indice'
+    def retourValeur(self,compteur):
+        Application.indice = compteur
+
+    def hexagrame(self):
+        # Création fenetre anexe
+        superFenetre = tk.Toplevel(root,takefocus=True,)
+        compteur=0
+        while compteur <= 9:
+            ##### Commande 64 boutons
+            self.chess1= tk.Button(superFenetre, 
+                    text=compteur, fg='green',
+                    anchor='nw',
+                    ## utilisation d'une fonction lambda pour 
+                    ## passer un parametre à la commande
+                    command=lambda x=1:Application.retourValeur(self,
+                        compteur))
+            self.chess1.pack(side='left', fill='both')
+            compteur += 1  
+        indice = Application.indice 
+        self.creation_label3(indice)
+
+
+#        self.chess2= tk.Button(superFenetre, 
+#            text="Valider", fg='red',
+#            anchor='nw',
+#            ## utilisation d'une fonction lambda pour 
+#            ## passer un parametre à la commande
+#            command=lambda x=1:Application.retourValeur(self,
+#                compteur))            
+#
+        Caglio.hexa(indice)
+        self.tatatext2.set(".: Hexagrame :.")        
         caglioFichier1= open("tmp.tmp","r")
         retour=caglioFichier1.read()
         self.tatatext1.set(retour)
@@ -120,7 +167,8 @@ class Application(tk.Frame):
         print(retour)
         self.tatatext1.set(retour)
 #        font = Font(family='Liberation Serif', size=30)
-#        self.cnv.create_text(65 , 230 ,font=font,text=retour,fill="green" )
+#        self.cnv.create_text(65 , 230 ,font=font,
+#                            text=retour,fill="green" )
         ff.close()
 #        textCaglio.set(retour)
         self.tatatext2.set(".: Rivière de Tao :.")        
@@ -130,8 +178,13 @@ class Application(tk.Frame):
 
     
     def appel_tri(self):
-        self.retour=Caglio.tri()
-        self.tatatext2.set(".: Liste des Trigrames :.")        
+        Caglio.tri()
+        self.tatatext2.set(".: Liste des Trigrames :.")       
+        caglioFichier1= open("tmp.tmp","r")
+        retour= caglioFichier1.read()
+        self.tatatext1.set(retour)
+        caglioFichier1.close()
+
 
 
 

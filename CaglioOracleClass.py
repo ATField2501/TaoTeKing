@@ -89,24 +89,40 @@ class Cagliostro():
             print(e,i[1])
 
     def hexa(self, indice):
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         try:
             print("{} {}".format(indice,tao[indice]))
+            caglioFichier1.write("{} {}".format(indice,tao[indice]))
         except KeyError:
             print("Il existe 64 hexagrammes, spécifiez un nombre cohérent")
+        caglioFichier1.close()    
 
     def tri(self):
         """
         Methode qui affiche les trigrammes
         """
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         print(utf_trigramme[0]+"  le ciel  ")
+        caglioFichier1.write(utf_trigramme[0]+"  le ciel  \n")
         print(utf_trigramme[1]+"  le maraicage/le lac ")
+        caglioFichier1.write(utf_trigramme[1]+"  le maraicage/le lac \n")
         print(utf_trigramme[2]+"  le feu ")
+        caglioFichier1.write(utf_trigramme[2]+"  le feu \n")
         print(utf_trigramme[3]+"  le tonerre ")
+        caglioFichier1.write(utf_trigramme[3]+"  le tonerre \n")
         print(utf_trigramme[4]+"  le vent/bois  ")
+        caglioFichier1.write(utf_trigramme[4]+"  le vent/bois  \n")
         print(utf_trigramme[5]+"  l'eau  ")
+        caglioFichier1.write(utf_trigramme[5]+"  l'eau  \n")
         print(utf_trigramme[6]+"  la montagne  ")
+        caglioFichier1.write(utf_trigramme[6]+"  la montagne  \n")
         print(utf_trigramme[7]+"  la terre ")
-       
+        caglioFichier1.write(utf_trigramme[7]+"  la terre \n")
+        caglioFichier1.close() 
         affichage=[]
         for cle, valeur in trigramme.items():
             affichage.append(cle+ ':')
