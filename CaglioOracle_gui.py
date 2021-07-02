@@ -8,6 +8,7 @@ from tkinter.font import Font
 class Application(tk.Frame):
     visu= "..:: (;,,;) ::.."
     indice= '44'
+
     ### Affichage de l'ecran
     def __init__(self, master=None):
         super().__init__(master)
@@ -63,11 +64,6 @@ class Application(tk.Frame):
         self.quit['bg']='black'
 
 
-
-
-
-
-
     # Création du canvas
     def creation_canvas(self):
         self.cnv=tk.Canvas(root, width=300, height=400, bg="black")
@@ -82,8 +78,9 @@ class Application(tk.Frame):
         self.tatatext1= tk.StringVar()
         self.tatatext1.set(" - TaoTéKing - ")
         self.font = Font(family='Liberation Serif', size=32)
+        self.font2 = Font(family='Liberation Serif', size=12)        
         self.label = tk.Label(root, textvariable=self.tatatext1 , 
-                bg="black", fg='#00ff3e', font=self.font )
+                bg="black", fg='#00ff3e', font=self.font2 )
         self.label.pack(pady=55,fill='x',)
     
 
@@ -97,9 +94,9 @@ class Application(tk.Frame):
     
     def creation_label3(self,*args):
         indice=args[0]
-        self.tatatext2= tk.StringVar()
-        self.tatatext2.set(indice)
-        self.label = tk.Label(root, textvariable=self.tatatext2)
+        self.tatatext3= tk.StringVar()
+        self.tatatext3.set(indice)
+        self.label = tk.Label(root, textvariable=self.tatatext3)
         self.label["fg"] = "yellow" 
         self.label['bg']='black'
         self.label.pack(pady=5)    
@@ -109,23 +106,54 @@ class Application(tk.Frame):
     def oracle(self):
         Caglio.oracle(aleph = True)
         ff=open("tmp.tmp","r")
-        retour=ff.read()
+        line=ff.read()
+        fff=open("tmp2.tmp","r")        
+        retour= fff.read()
         self.tatatext1.set(retour)
-        # Création fenetre anexe
+        # Création fenetre annexe
         superFenetre = tk.Toplevel(root)
-        self.label=tk.Label(superFenetre, text="TEST!!!!",
+        self.label=tk.Label(superFenetre, text=line,
                 bg="black", fg="chartreuse")
         self.label.pack()
+
         self.tatatext2.set(".: Oracle :.")        
         ff.close()
+        fff.close()
+
+
+
 
     ## methode apppelé par les 64 boutons pour pouvoir renvoyer
     #  une valeur à la variable 'indice'
     def retourValeur(self,compteur):
         Application.indice = compteur
 
+
+
+
+
+
     def hexagrame(self):
-        # Création fenetre anexe
+#        self.chess2= tk.Button(superFenetre, 
+#            text="Valider", fg='red',
+#            anchor='nw',
+#            ## utilisation d'une fonction lambda pour 
+#            ## passer un parametre à la commande
+#            command=lambda x=1:Application.retourValeur(self,
+#                compteur))            
+#
+        indice = Application.indice 
+        Caglio.hexa(indice)
+        self.tatatext2.set(".: Hexagrame :.")        
+        caglioFichier1= open("tmp.tmp","r")
+        retour=caglioFichier1.read()
+        self.tatatext1.set(retour)
+
+
+
+#        Application.visuel(retour)
+        caglioFichier1.close()
+        # Création fenetre annexe
         superFenetre = tk.Toplevel(root,takefocus=True,)
         compteur=0
         while compteur <= 9:
@@ -138,28 +166,10 @@ class Application(tk.Frame):
                     command=lambda x=1:Application.retourValeur(self,
                         compteur))
             self.chess1.pack(side='left', fill='both')
-            compteur += 1  
-        indice = Application.indice 
-        self.creation_label3(indice)
+            compteur += 1 
 
 
-#        self.chess2= tk.Button(superFenetre, 
-#            text="Valider", fg='red',
-#            anchor='nw',
-#            ## utilisation d'une fonction lambda pour 
-#            ## passer un parametre à la commande
-#            command=lambda x=1:Application.retourValeur(self,
-#                compteur))            
-#
-        Caglio.hexa(indice)
-        self.tatatext2.set(".: Hexagrame :.")        
-        caglioFichier1= open("tmp.tmp","r")
-        retour=caglioFichier1.read()
-        self.tatatext1.set(retour)
 
-
-#        Application.visuel(retour)
-    
     def appel_tao(self):
         Caglio.riviere()
         ff=open("tmp.tmp","r")
