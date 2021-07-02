@@ -8,7 +8,6 @@ from tkinter.font import Font
 class Application(tk.Frame):
     visu= "..:: (;,,;) ::.."
     indice= '44'
-
     ### Affichage de l'ecran
     def __init__(self, master=None):
         super().__init__(master)
@@ -111,27 +110,19 @@ class Application(tk.Frame):
         retour= fff.read()
         self.tatatext1.set(retour)
         # Création fenetre annexe
-        superFenetre = tk.Toplevel(root)
+        superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
         self.label=tk.Label(superFenetre, text=line,
                 bg="black", fg="chartreuse")
         self.label.pack()
-
         self.tatatext2.set(".: Oracle :.")        
         ff.close()
         fff.close()
-
-
 
 
     ## methode apppelé par les 64 boutons pour pouvoir renvoyer
     #  une valeur à la variable 'indice'
     def retourValeur(self,compteur):
         Application.indice = compteur
-
-
-
-
-
 
     def hexagrame(self):
 #        self.chess2= tk.Button(superFenetre, 
@@ -174,8 +165,16 @@ class Application(tk.Frame):
         Caglio.riviere()
         ff=open("tmp.tmp","r")
         retour=ff.read()
-        print(retour)
+#        print(retour)
         self.tatatext1.set(retour)
+        retour2 = tk.StringVar()
+        retour2 = retour
+        # Création fenetre annexe
+        superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
+        self.label=tk.Label(superFenetre, textvariable=retour,
+                bg="black", fg="chartreuse")
+        self.label.pack()       
+
 #        font = Font(family='Liberation Serif', size=30)
 #        self.cnv.create_text(65 , 230 ,font=font,
 #                            text=retour,fill="green" )
@@ -183,7 +182,7 @@ class Application(tk.Frame):
 #        textCaglio.set(retour)
         self.tatatext2.set(".: Rivière de Tao :.")        
 #        Application.visuel(self.retour)
-        self.after(250,self.appel_tao)
+#         self.after(250,self.appel_tao)
 
 
     

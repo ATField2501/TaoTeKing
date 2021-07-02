@@ -277,7 +277,7 @@ class Cagliostro():
         for e,i in taOnumerik.items():
             if i[0] == tirage1:
                 print('              '+i[1])
-                caglioFichier1.write('     '+i[1])
+                caglioFichier1.write("\n     "+i[1])
                 print("\n      "+e+'  '+"\n")
                 caglioFichier1.write("\n      "+e+'  '+"\n")
                 memoire= i[1]
@@ -285,19 +285,23 @@ class Cagliostro():
 
         # affichage
         print(presentation[0]+'     '+presentation[4])
-        caglioFichier1.write(presentation[0]+'     '+presentation[4]+"\n")
+        caglioFichier1.write("\n"+presentation[0]+'     '+
+                presentation[4]+"\n")
 #        print(presentation[1]+'     '+presentation[5])
         print(presentation[2]+'         '+presentation[6]+"\n")
-        caglioFichier1.write(presentation[2]+'         '+presentation[6])
-        print("\n"+presentation[3]+'       '+presentation[7])
-        caglioFichier1.write("\n"+presentation[3]+'       '+presentation[7]+"\n")
+        caglioFichier1.write(presentation[2]+'         '+
+                presentation[6])
+        print("\n"+presentation[3]+'           '+presentation[7])
+        caglioFichier1.write("\n"+presentation[3]+'       '+
+                presentation[7]+"\n")
 
         # Recherche de la position
         for index,e in enumerate(hexagramme):
             if e == memoire:
              #   print("              "+str(index+1))
                 print(str(index+1)+ ' ' +oracle[index+1])
-                caglioFichier1.write(str(index+1)+ ' ' +oracle[index+1]+"\n")       
+                caglioFichier1.write("\n"+str(index+1)+ '. ' 
+                        +oracle[index+1]+"\n")       
 
 
 
@@ -310,7 +314,7 @@ class Cagliostro():
             for e,i in taOnumerik.items():
                 if i[0] == tirage2:
                     print('              '+i[1])
-                    caglioFichier1.write('       '+i[1])
+                    caglioFichier1.write("\n       "+i[1])
                     print("\n      "+e+'  '+"\n")
                     caglioFichier1.write("\n      "+e+'  '+"\n")
                     memoire= i[1]
@@ -330,18 +334,22 @@ class Cagliostro():
 
             # affichage
             print(presentation[0]+'     '+presentation[4])
-            caglioFichier1.write(presentation[0]+'     '+presentation[4]+"\n")
+            caglioFichier1.write("\n"+presentation[0]+'     '+
+                    presentation[4]+"\n")
 #            print(presentation[1]+'     '+presentation[5])
             print(presentation[2]+'         '+presentation[6])
-            caglioFichier1.write(presentation[2]+'         '+presentation[6])
+            caglioFichier1.write(presentation[2]+'         '+
+                    presentation[6])
             print("\n"+presentation[3]+'       '+presentation[7])
-            caglioFichier1.write("\n"+presentation[3]+'       '+presentation[7]+"\n")
+            caglioFichier1.write("\n"+presentation[3]+'       '+
+                    presentation[7]+"\n")
             # Recherche de la position
             for index,e in enumerate(hexagramme):
                 if e == memoire:
                  #   print("              "+str(index+1))
                     print(str(index+1)+ ' ' +oracle[index+1])
-                    caglioFichier1.write(str(index+1)+ ' ' +oracle[index+1]+"\n")
+                    caglioFichier1.write("\n"+str(index+1)+ '. ' +
+                            oracle[index+1]+"\n")
         if transformation == False:
              print('Situation Stable\n Aucune Transformation')
              caglioFichier1.write('Situation Stable\n Aucune Transformation')
