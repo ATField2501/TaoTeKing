@@ -170,13 +170,6 @@ class Cagliostro():
             nb1 += 1
 #        caglioFichier1.write(sauvegarde)
         caglioFichier1.close()
-         
-
-    def gui_riviere(): 
-        """
-        Rivière du Tao en mode graphique
-        """
-        objet=Caglio_gui()
         
         
 

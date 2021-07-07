@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 #-*- coding: utf8
+# auteur: <atfield2501@gmail.com>
+# Oracle graphique
 
 import tkinter as tk
 from CaglioOracleClass import *
@@ -14,20 +16,16 @@ class Application(tk.Frame):
         self.master = master
         self.pack()
         self.create_widgets()
-#        self.creation_canvas()
         self.creation_label1()
         self.creation_label2()
         
-
-    def visuel(self, retour):
-        print(retour)
-        Application.visu= retour 
         
     def create_widgets(self):
+        """ ya Cthulhu """
         ##### Commande Oracle
         self.hi_there = tk.Button(self)
         self.hi_there["text"] = "Oracle"
-        self.hi_there["command"] = self.oracle
+        self.hi_there["command"] = self.appel_oracle
         self.hi_there["fg"] = "green"
         self.hi_there['bg']='black'
         self.hi_there.grid (column = 0, row = 0)
@@ -61,62 +59,61 @@ class Application(tk.Frame):
                               command=self.master.destroy)
         self.quit.grid (column = 4, row = 0)
         self.quit['bg']='black'
-
-
-    # Création du canvas
-    def creation_canvas(self):
-        self.cnv=tk.Canvas(root, width=300, height=400, bg="black")
-        self.cnv.pack(padx=50, pady=50)
-        self.font = Font(family='Liberation Serif', size=32)
-        textCaglio = tk.StringVar() 
-        textCaglio.set("TaoTéKing")
-        self.cnv.create_text(150 , 105 ,font=self.font,
-                                        text=textCaglio,
-                                        fill="red" )
+    
     def creation_label1(self):
+        """ ya Cthulhu """
         self.tatatext1= tk.StringVar()
-        self.tatatext1.set(" - TaoTéKing - ")
+        self.tatatext1.set(" - TaoTéKing - \n"+yinyang)
         self.font = Font(family='Liberation Serif', size=32)
         self.font2 = Font(family='Liberation Serif', size=12)        
-        self.label = tk.Label(root, textvariable=self.tatatext1 , 
+        self.label0 = tk.Label(root, textvariable=self.tatatext1 , 
                 bg="black", fg='#00ff3e', font=self.font2 )
-        self.label.pack(pady=55,fill='x',)
+        self.label0.pack(pady=55)
     
 
     def creation_label2(self):
+        """ ya Cthulhu """
         self.tatatext2= tk.StringVar()
         self.tatatext2.set(" - oba production - ")
         self.label = tk.Label(root, textvariable=self.tatatext2)
         self.label["fg"] = "yellow" 
         self.label['bg']='black'
         self.label.pack(pady=5)
-    
-    def creation_label3(self,*args):
-        indice=args[0]
-        self.tatatext3= tk.StringVar()
-        self.tatatext3.set(indice)
-        self.label = tk.Label(root, textvariable=self.tatatext3)
-        self.label["fg"] = "yellow" 
-        self.label['bg']='black'
-        self.label.pack(pady=5)    
-    
-    
+
+
     ######################## action des commandes
-    def oracle(self):
+    def appel_oracle(self):
+        """
+        Appel de la méthode Oracle de la classe Cagliostro
+        et mise à jour des labels
+        """
         Caglio.oracle(aleph = True)
-        ff=open("tmp.tmp","r")
-        line=ff.read()
-        fff=open("tmp2.tmp","r")        
-        retour= fff.read()
-        self.tatatext1.set(retour)
-        # Création fenetre annexe
+        caglioListe=[]
+
+        with open("tmp.tmp", 'r') as filin:
+            # Affichage lent de l'hexagrame en train de se tirer
+            for e in filin.readlines():
+                caglioListe.append(e)
+                print(e)
+                self.after(300) 
+        print(caglioListe)
+
+        with open("tmp2.tmp","r") as canin:
+            retour= canin.read()        
+            self.tatatext1.set(retour)
+
+        # Création fenetre annexe pour basculer l'affichage
+        # du tirage
+        supra=""
+        for e in caglioListe:
+            supra += e
         superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
-        self.label=tk.Label(superFenetre, text=line,
+        self.label=tk.Label(superFenetre, text=supra,
                 bg="black", fg="chartreuse")
         self.label.pack()
+        
+        # mise à jour pied de page
         self.tatatext2.set(".: Oracle :.")        
-        ff.close()
-        fff.close()
 
 
     ## methode apppelé par les 64 boutons pour pouvoir renvoyer
@@ -135,12 +132,11 @@ class Application(tk.Frame):
 #
         indice = Application.indice 
         Caglio.hexa(indice)
+        # mise à jour pied de page
         self.tatatext2.set(".: Hexagrame :.")        
         caglioFichier1= open("tmp.tmp","r")
         retour=caglioFichier1.read()
         self.tatatext1.set(retour)
-
-
 
 #        Application.visuel(retour)
         caglioFichier1.close()
@@ -159,8 +155,6 @@ class Application(tk.Frame):
             self.chess1.pack(side='left', fill='both')
             compteur += 1 
 
-
-
     def appel_tao(self):
         Caglio.riviere()
         ff=open("tmp.tmp","r")
@@ -169,23 +163,14 @@ class Application(tk.Frame):
         self.tatatext1.set(retour)
         retour2 = tk.StringVar()
         retour2 = retour
-        # Création fenetre annexe
-        superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
-        self.label=tk.Label(superFenetre, textvariable=retour,
-                bg="black", fg="chartreuse")
-        self.label.pack()       
 
-#        font = Font(family='Liberation Serif', size=30)
-#        self.cnv.create_text(65 , 230 ,font=font,
-#                            text=retour,fill="green" )
         ff.close()
 #        textCaglio.set(retour)
         self.tatatext2.set(".: Rivière de Tao :.")        
 #        Application.visuel(self.retour)
 #         self.after(250,self.appel_tao)
 
-
-    
+  
     def appel_tri(self):
         Caglio.tri()
         self.tatatext2.set(".: Liste des Trigrames :.")       
@@ -195,12 +180,11 @@ class Application(tk.Frame):
         caglioFichier1.close()
 
 
-
-
 Caglio= Cagliostro()
 
 root = tk.Tk()
 root.title(' - TaoTéKing -')
 root["bg"]="black"
+
 app = Application(master=root)
 app.mainloop()
