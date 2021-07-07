@@ -89,24 +89,40 @@ class Cagliostro():
             print(e,i[1])
 
     def hexa(self, indice):
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         try:
             print("{} {}".format(indice,tao[indice]))
+            caglioFichier1.write("{} {}".format(indice,tao[indice]))
         except KeyError:
             print("Il existe 64 hexagrammes, spécifiez un nombre cohérent")
+        caglioFichier1.close()    
 
     def tri(self):
         """
         Methode qui affiche les trigrammes
         """
+        ## Ecriture dans un fichier
+        caglioFichier1= open("tmp.tmp","w")
+        caglioFichier1= open("tmp.tmp","a")
         print(utf_trigramme[0]+"  le ciel  ")
+        caglioFichier1.write(utf_trigramme[0]+"  le ciel  \n")
         print(utf_trigramme[1]+"  le maraicage/le lac ")
+        caglioFichier1.write(utf_trigramme[1]+"  le maraicage/le lac \n")
         print(utf_trigramme[2]+"  le feu ")
+        caglioFichier1.write(utf_trigramme[2]+"  le feu \n")
         print(utf_trigramme[3]+"  le tonerre ")
+        caglioFichier1.write(utf_trigramme[3]+"  le tonerre \n")
         print(utf_trigramme[4]+"  le vent/bois  ")
+        caglioFichier1.write(utf_trigramme[4]+"  le vent/bois  \n")
         print(utf_trigramme[5]+"  l'eau  ")
+        caglioFichier1.write(utf_trigramme[5]+"  l'eau  \n")
         print(utf_trigramme[6]+"  la montagne  ")
+        caglioFichier1.write(utf_trigramme[6]+"  la montagne  \n")
         print(utf_trigramme[7]+"  la terre ")
-       
+        caglioFichier1.write(utf_trigramme[7]+"  la terre \n")
+        caglioFichier1.close() 
         affichage=[]
         for cle, valeur in trigramme.items():
             affichage.append(cle+ ':')
@@ -154,13 +170,6 @@ class Cagliostro():
             nb1 += 1
 #        caglioFichier1.write(sauvegarde)
         caglioFichier1.close()
-         
-
-    def gui_riviere(): 
-        """
-        Rivière du Tao en mode graphique
-        """
-        objet=Caglio_gui()
         
         
 
@@ -199,8 +208,9 @@ class Cagliostro():
                 transformation = True
                 print('      '+str(jet+1)+trai4+' 4')
                 caglioFichier1.write(str(jet+1)+"  ____  X  ____"+" 4\n")
-            
             jet += 1
+       
+
         # premier jet
         tirage1= list(tirage)
         for i,e in enumerate(tirage):
@@ -223,20 +233,25 @@ class Cagliostro():
         # Affichage uniquement en mode verbeux
         if aleph == True:
             print(tirage) 
-#            caglioFichier1.write(str(tirage)+"\n")
+            caglioFichier1.write("\n\n"+str(tirage)+"\n")
             print(tirage1)
-#            caglioFichier1.write(str(tirage1)+"\n")
+            caglioFichier1.write(str(tirage1)+"\n")
             print(tirage2)
-#            caglioFichier1.write(str(tirage2)+"\n")
+            caglioFichier1.write(str(tirage2)+"\n")
             print(sub1,sub2)
-#            caglioFichier1.write(str(sub1))
-#            caglioFichier1.write(str(sub2)+"\n")
+            caglioFichier1.write(str(sub1))
+            caglioFichier1.write(str(sub2)+"\n")
             print(sub3,sub4)
-#            caglioFichier1.write(str(sub3))
-#            caglioFichier1.write(str(sub4)+"\n")
-        #####################################################################
+            caglioFichier1.write(str(sub3))
+            caglioFichier1.write(str(sub4)+"\n")
+        ##############################################################
+        # Ecriture dans un fichier
+        caglioFichier1=open("tmp2.tmp","w")
+        caglioFichier1=open("tmp2.tmp","a")
         print("\n         ETAT INITIAL ")
-        # On créer une liste conteneur pour afficher selon un ordre horizontale
+        caglioFichier1.write("         ETAT INITIAL \n ")
+        # On créer une liste conteneur pour afficher 
+        # selon un ordre horizontale
         presentation= []
         presentation.append("    En Haut ")
         presentation.append("    ------- ")
@@ -249,27 +264,54 @@ class Cagliostro():
         for i,element in enumerate(numerik):
             if element == sub2:
                 artefact(i, presentation)
-       
-        # affichage
-        print(presentation[0]+'     '+presentation[4])
-#        print(presentation[1]+'     '+presentation[5])
-        print(presentation[2]+'         '+presentation[6])        
-        print("\n"+presentation[3]+'       '+presentation[7])
-
-        # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
+        
+        # Recherche equivalence du tirage1 dans les 
+        # valeurs du dico taOnumerik
         for e,i in taOnumerik.items():
             if i[0] == tirage1:
                 print('              '+i[1])
+                caglioFichier1.write("\n     "+i[1])
                 print("\n      "+e+'  '+"\n")
+                caglioFichier1.write("\n      "+e+'  '+"\n")
                 memoire= i[1]
+
+
+        # affichage
+        print(presentation[0]+'     '+presentation[4])
+        caglioFichier1.write("\n"+presentation[0]+'     '+
+                presentation[4]+"\n")
+#        print(presentation[1]+'     '+presentation[5])
+        print(presentation[2]+'         '+presentation[6]+"\n")
+        caglioFichier1.write(presentation[2]+'         '+
+                presentation[6])
+        print("\n"+presentation[3]+'           '+presentation[7])
+        caglioFichier1.write("\n"+presentation[3]+'       '+
+                presentation[7]+"\n")
+
         # Recherche de la position
         for index,e in enumerate(hexagramme):
             if e == memoire:
              #   print("              "+str(index+1))
                 print(str(index+1)+ ' ' +oracle[index+1])
-        #####################################################################
+                caglioFichier1.write("\n"+str(index+1)+ '. ' 
+                        +oracle[index+1]+"\n")       
+
+
+
+        #############################################################
         if transformation == True:
             print("\n        TRANSFORMATION ")
+            caglioFichier1.write("\n        TRANSFORMATION \n")
+            # Recherche equivalence du tirage1 dans
+            # les valeurs du dico taOnumerik
+            for e,i in taOnumerik.items():
+                if i[0] == tirage2:
+                    print('              '+i[1])
+                    caglioFichier1.write("\n       "+i[1])
+                    print("\n      "+e+'  '+"\n")
+                    caglioFichier1.write("\n      "+e+'  '+"\n")
+                    memoire= i[1]
+
             # je vide la liste pour la re-remplire
             presentation= []
             presentation.append("    En Haut ")
@@ -285,21 +327,24 @@ class Cagliostro():
 
             # affichage
             print(presentation[0]+'     '+presentation[4])
+            caglioFichier1.write("\n"+presentation[0]+'     '+
+                    presentation[4]+"\n")
 #            print(presentation[1]+'     '+presentation[5])
             print(presentation[2]+'         '+presentation[6])
+            caglioFichier1.write(presentation[2]+'         '+
+                    presentation[6])
             print("\n"+presentation[3]+'       '+presentation[7])
-
-            # Recherche equivalence du tirage1 dans les valeurs du dico taOnumerik
-            for e,i in taOnumerik.items():
-                if i[0] == tirage2:
-                    print('              '+i[1])
-                    print("\n      "+e+'  '+"\n")
-                    memoire= i[1]
+            caglioFichier1.write("\n"+presentation[3]+'       '+
+                    presentation[7]+"\n")
             # Recherche de la position
             for index,e in enumerate(hexagramme):
                 if e == memoire:
                  #   print("              "+str(index+1))
                     print(str(index+1)+ ' ' +oracle[index+1])
+                    caglioFichier1.write("\n"+str(index+1)+ '. ' +
+                            oracle[index+1]+"\n")
         if transformation == False:
              print('Situation Stable\n Aucune Transformation')
+             caglioFichier1.write('Situation Stable\n Aucune Transformation')
+        caglioFichier1.close()     
 
