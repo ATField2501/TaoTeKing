@@ -96,11 +96,8 @@ class Application(tk.Frame):
                 caglioListe.append(e)
                 print(e)
         
-        print(caglioListe)
         affichage=""
         for e in caglioListe[:6]:
-#            Application.temporisation(self,e)
-#            self.tatatext1.set(e)
             affichage += e
             self.tatatext1.set(affichage)
             ## SUPER instruction à connaitre :/ 
