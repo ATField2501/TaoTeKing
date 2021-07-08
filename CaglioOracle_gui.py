@@ -95,11 +95,22 @@ class Application(tk.Frame):
             for e in filin.readlines():
                 caglioListe.append(e)
                 print(e)
-                self.after(300) 
+        
         print(caglioListe)
+        affichage=""
+        for e in caglioListe[:6]:
+#            Application.temporisation(self,e)
+#            self.tatatext1.set(e)
+            affichage += e
+            self.tatatext1.set(affichage)
+            ## SUPER instruction à connaitre :/ 
+            ## Mise à jour de l'affichage
+            self.label.update_idletasks()
+            self.after(500)
 
         with open("tmp2.tmp","r") as canin:
-            retour= canin.read()        
+            retour= canin.read()       
+            self.after(500)
             self.tatatext1.set(retour)
 
         # Création fenetre annexe pour basculer l'affichage
@@ -188,3 +199,4 @@ root["bg"]="black"
 
 app = Application(master=root)
 app.mainloop()
+
