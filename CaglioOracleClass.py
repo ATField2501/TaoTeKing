@@ -191,23 +191,23 @@ class Cagliostro():
             if target == 1:
                 tirage.append(1)
                 print('      '+str(jet+1)+trai1+' 1')
-                caglioFichier1.write(str(jet+1)+"  ____      ____"+" 1\n")
+                caglioFichier1.write("  ____      ____"+" \n")
             if target == 2:
                 tirage.append(2)
                 print('      '+str(jet+1)+trai2+' 2')
-                caglioFichier1.write(str(jet+1)+"  ____     ____"+" 2\n")
+                caglioFichier1.write("  ____________"+" \n")
 
             if target == 3:
                 tirage.append(3)
                 transformation = True
                 print('      '+str(jet+1)+trai3+' 3')
-                caglioFichier1.write(str(jet+1)+"  ____  O  ____"+" 3\n")
+                caglioFichier1.write("  ____  O  ____"+" \n")
 
             if target == 4:
                 tirage.append(4)
                 transformation = True
                 print('      '+str(jet+1)+trai4+' 4')
-                caglioFichier1.write(str(jet+1)+"  ____  X  ____"+" 4\n")
+                caglioFichier1.write("  ____  X  ____"+" \n")
             jet += 1
        
 

@@ -10,6 +10,7 @@ from tkinter.font import Font
 class Application(tk.Frame):
     visu= "..:: (;,,;) ::.."
     indice= '44'
+    zelote = True
     ### Affichage de l'ecran
     def __init__(self, master=None):
         super().__init__(master)
@@ -17,8 +18,9 @@ class Application(tk.Frame):
         self.pack()
         self.create_widgets()
         self.creation_label1()
+        self.creationLabelRiviere()
         self.creation_label2()
-        
+        self.appel_tao()
         
     def create_widgets(self):
         """ ya Cthulhu """
@@ -30,13 +32,14 @@ class Application(tk.Frame):
         self.hi_there['bg']='black'
         self.hi_there.grid (column = 0, row = 0)
 
-        # Commande Rivière de Tao
-        self.riviere = tk.Button(self)
-        self.riviere["text"] = "Rivière de Tao"
-        self.riviere["command"] = self.appel_tao
-        self.riviere["fg"] = "green"
-        self.riviere['bg']='black'
-        self.riviere.grid (column = 1, row = 0)
+#        # Commande Rivière de Tao
+#        self.riviere = tk.Button(self)
+#        self.riviere["text"] = "Rivière de Tao"
+#        zelote=True
+#        self.riviere["command"] =self.appel_tao           
+#        self.riviere["fg"] = "green"
+#        self.riviere['bg']='black'
+#        self.riviere.grid (column = 1, row = 0)
         
         # Commande Affichage Trigrammes
         self.trigrame = tk.Button(self)
@@ -69,7 +72,15 @@ class Application(tk.Frame):
         self.label0 = tk.Label(root, textvariable=self.tatatext1 , 
                 bg="black", fg='#00ff3e', font=self.font2 )
         self.label0.pack(pady=55)
-    
+
+    def creationLabelRiviere(self):
+        """ ya Cthulhu """
+        self.tatatext3= tk.StringVar()
+        self.tatatext3.set(yinyang)
+        self.font = Font(family='Liberation Serif', size=32)
+        self.label00 = tk.Label(root, textvariable=self.tatatext3 , 
+                bg="black", fg='#00ff3e', font=self.font2 )
+        self.label00.pack(side='right')
 
     def creation_label2(self):
         """ ya Cthulhu """
@@ -99,11 +110,28 @@ class Application(tk.Frame):
         affichage=""
         for e in caglioListe[:6]:
             affichage += e
-            self.tatatext1.set(affichage)
+            # Colorisation en fonction du traie tiré
+            if e == "  ____      ____"+" \n":
+                self.label0.config(fg='cyan')
+
+            if e == "  ____________"+" \n" :
+                self.label0.config(fg='blue')
+
+            if e == "  ____  O  ____"+" \n" :
+                self.label0.config(fg='pink')
+
+            if e == "  ____  X  ____"+" \n" :
+                self.label0.config(fg='yellow')
+
+
+
+            self.tatatext1.set(affichage) 
             ## SUPER instruction à connaitre :/ 
             ## Mise à jour de l'affichage
             self.label.update_idletasks()
             self.after(500)
+                
+        self.label0.config(fg='chartreuse')
 
         with open("tmp2.tmp","r") as canin:
             retour= canin.read()       
@@ -163,22 +191,22 @@ class Application(tk.Frame):
             self.chess1.pack(side='left', fill='both')
             compteur += 1 
 
+    def lanceurCommande(self):
+        Application.zelote = False
+
+    
+    
     def appel_tao(self):
         Caglio.riviere()
-        ff=open("tmp.tmp","r")
-        retour=ff.read()
-#        print(retour)
-        self.tatatext1.set(retour)
-        retour2 = tk.StringVar()
-        retour2 = retour
-
-        ff.close()
-#        textCaglio.set(retour)
-        self.tatatext2.set(".: Rivière de Tao :.")        
-#        Application.visuel(self.retour)
-#         self.after(250,self.appel_tao)
-
-  
+        with open("tmp.tmp","r") as ff:
+            retour=ff.read()
+            self.tatatext3.set(retour)
+            retour2 = tk.StringVar()
+            retour2 = retour
+            self.tatatext2.set(".: Rivière de Tao :.")        
+            if Application.zelote == True:
+                self.after(250,self.appel_tao)
+      
     def appel_tri(self):
         Caglio.tri()
         self.tatatext2.set(".: Liste des Trigrames :.")       
