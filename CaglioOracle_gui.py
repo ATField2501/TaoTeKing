@@ -10,94 +10,146 @@ from tkinter.font import Font
 class Application(tk.Frame):
     visu= "..:: (;,,;) ::.."
     indice= '44'
-    zelote = True
+    zelote = False
     def __init__(self, master=None):
         super().__init__(master)
         self.master = master
-        self.pack()
+#        self.pack()
         self.create_widgets()
+        self.creation_canvas()
         self.creation_label1()
-
         self.creation_label2()
         
     def create_widgets(self):
         """ ya Cthulhu """
-        ##### Commande Oracle
-        self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Oracle"
-        self.hi_there["command"] = self.appel_oracle
-        self.hi_there["fg"] = "green"
-        self.hi_there['bg']='black'
-        self.hi_there.grid (column = 0, row = 0)
 
-        # Commande Rivière de Tao
-        self.riviere = tk.Button(self)
-        self.riviere["text"] = "Rivière de Tao"
-        zelote=True
-        self.riviere["command"] =self.appel_tao           
-        self.riviere["fg"] = "green"
-        self.riviere['bg']='black'
-        self.riviere.grid (column = 1, row = 0)
-        
-        # Commande Affichage Trigrammes
-        self.trigrame = tk.Button(self)
-        self.trigrame["text"] = "Trigrames"
-        self.trigrame["command"] = self.appel_tri
-        self.trigrame["fg"] = "green" 
-        self.trigrame['bg']='black'
-        self.trigrame.grid (column = 2, row = 0)        
-        
-        ##### Commande Hexagrame
-        self.hi = tk.Button(self)
-        self.hi["text"] = "Hexagrame"
-        self.hi["command"] = self.hexagrame
-        self.hi.grid (column = 3, row = 0)
-        self.hi["fg"] = "green"
-        self.hi['bg']='black'
+        # Création du cadre-conteneur pour les menus
+        self.zoneMenu = tk.Frame(root, borderwidth=1, bg='ivory')
+        self.zoneMenu.grid(row=1,column=0)
 
-        ##### Commande Quitter
-        self.quit = tk.Button(self, text="QUIT", fg="green",
-                              command=self.master.destroy)
-        self.quit.grid (column = 4, row = 0)
-        self.quit['bg']='black'
-    
-#    def creation_canvasl00(self):
-#        """ Canvas contenant le tirage """
-#        self.canvas_tirage = tk.Canvas(root, width=100, height=150, bg='green')   
-#        self.canvas_tirage.create_oval(0, 0, 200, 200, outline="red", width=10)
-#        self.canvas_tirage.create_line(0, 0, 200, 200, fill="black", width=10)
-#        self.canvas_tirage.create_line(0, 200, 200, 0, fill="black", width=10)
-#        self.canvas_tirage.pack()
+        # Création de l'onglet Fichier
+        self.menuFichier = tk.Menubutton(self.zoneMenu,
+                text='Executer', width='20', borderwidth=2, 
+                bg='black', fg='chartreuse' ,
+                activebackground='darkorange',
+                relief = tk.RAISED)
+        self.menuFichier.grid(row=1,column=0)
+
+        # Création de l'onglet Edition
+        self.menuEdit = tk.Menubutton(self.zoneMenu, text='Editer',
+                width='20', borderwidth=2, bg='black', fg='chartreuse',
+                activebackground='darkorange',relief = tk.RAISED)
+        self.menuEdit.grid(row=1,column=1)
+
+        # Création de l'onglet A Propos 
+        self.menuFormat = tk.Menubutton(self.zoneMenu, text='A propos', 
+                width='20', borderwidth=2, bg='black', fg='chartreuse',
+                activebackground='darkorange',relief = tk.RAISED)
+        self.menuFormat.grid(row=1,column=2)
+
+
+
+        # Création du menu deroulant pour l'onglet Executer
+        self.menuDeroulant1 = tk.Menu(self.menuFichier, tearoff = 0)
+        self.menuDeroulant1.add_command(label='Oracle', 
+                command = self.appel_oracle)
+        self.menuDeroulant1.add_command(label="Tao", 
+                command = self.appel_tao )
+        self.menuDeroulant1.add_command(label="Trigrammes",
+                command = self.appel_tri)
+        self.menuDeroulant1.add_command(label="recherche Hexagramme",
+                command = self.hexagrame)
+        self.menuDeroulant1.add_command(label="Quitter",
+                command = self.master.destroy)
+        # Attribution du menu déroulant au menu Affichage
+        self.menuFichier.configure(menu=self.menuDeroulant1)
+
+        self.bTest = tk.IntVar()
+
+        # Création du menu deroulant pour l'onglet A Propos 
+        self.menuDeroulant2 = tk.Menu(self.menuEdit, tearoff = 0)
+        self.menuDeroulant2.add_checkbutton(label='Verbeux', 
+                variable=self.bTest, onvalue=1, offvalue=0)
+        self.menuEdit.configure(menu=self.menuDeroulant2)
+        
+
+        # Création du menu deroulant pour l'onglet A Propos 
+        self.menuDeroulant3 = tk.Menu(self.menuFormat, tearoff = 0)
+        self.menuDeroulant3.add_command(label='Auteur', 
+                command = self.appel_oracle)
+        self.menuDeroulant3.add_command(label="Code Source", 
+                command = self.appel_tao )
+        self.menuFormat.configure(menu=self.menuDeroulant3)
+
+
+    def creation_canvas(self):
+        """ Label contenant le tirage """
+        self.canvas_tirage = tk.Canvas(root, width=100, 
+                height=130, bg='black')  
+        # image
+        self.fond = tk.PhotoImage(file="yinyang.png") 
+        #image de fond 
+        self.canvas_tirage.create_image(50, 65, image=self.fond)
+
+
+#
+#        self.canvas_tirage.create_oval(0,25,100,110,fill="chartreuse")
+#        self.canvas_tirage.create_oval(20,25,80,70,fill="black")
+#        self.canvas_tirage.create_oval(20,70,80,110,fill="ivory")
+#        self.canvas_tirage.create_oval(44,45,52,53,fill="chartreuse")
+#        self.canvas_tirage.create_oval(40,95,52,83,fill="black")
+
+################# COORDONEE POUR TIRAGE
+#        ### traçage du YIN
+#        self.canvas_tirage.create_line(20,25,80,25, width=4, fill="chartreuse")
+#        ### traçage du YANG
+#        self.canvas_tirage.create_line(20,40,40,40, width=4, fill="chartreuse")
+#        self.canvas_tirage.create_line(60,40,80,40, width=4, fill="chartreuse")
+#        ### traçage du VIEUX YIN
+#        self.canvas_tirage.create_line(20,55,80,55, width=4, fill="darkorange")        
+#        ### traçage du VIEUX YANG
+#        self.canvas_tirage.create_line(20,70,40,70, width=4, fill="darkorange")
+#        self.canvas_tirage.create_line(60,70,80,70, width=4, fill="darkorange")
+#
+#
+#        self.canvas_tirage.create_line(20,85,80,85, width=4, fill="chartreuse")
+#
+#        self.canvas_tirage.create_line(20,100,80,100, width=4, fill="chartreuse")
+        self.canvas_tirage.grid(row=4, column=0)
 
     def creation_label1(self):
         """ Label contenant la traduction """
         self.tatatext1= tk.StringVar()
         self.tatatext1.set(" - TaoTéKing - \n"+yinyang)
         self.font = Font(family='Liberation Serif', size=32)
-        self.font2 = Font(family='Liberation Serif', size=12)        
+        self.font2 = Font(family='Liberation Serif', size=12)     
+#        scrollbar = tk.Scrollbar(root)
+#        scrollbar.pack( side = tk.RIGHT, fill = tk.Y )
         self.label0 = tk.Label(root, textvariable=self.tatatext1 , 
-                bg="black", fg='#00ff3e', font=self.font2 )
-      
-        self.label0.pack(pady=55, side='top')
+                bg="black", fg='#00ff3e', relief="ridge" , 
+                borderwidth=2 , font=self.font2)
+        self.label0.grid(row=6, column=0)
     
     def creation_label2(self):
-        """ Label contenant le pied de page """
+        """ Label l'entete """
         self.tatatext2= tk.StringVar()
         self.tatatext2.set(" - oba production - ")
         self.label = tk.Label(root, textvariable=self.tatatext2)
         self.label["fg"] = "yellow" 
         self.label['bg']='black'
-        self.label.pack(pady=5, side='bottom')
+        self.label.grid(row=3, column=0)
+
 
 
     ######################## action des commandes
     def appel_oracle(self):
         """
         Appel de la méthode Oracle de la classe Cagliostro
-        et mise à jour des labels
+        et mise à jour du canvas et des labels
         """
         Caglio.oracle(aleph = True)
         caglioListe=[]
+        Application.zelote = False        
 
         with open("tmp.tmp", 'r') as filin:
             # Affichage lent de l'hexagrame en train de se tirer
@@ -108,18 +160,48 @@ class Application(tk.Frame):
         affichage=""
         for e in caglioListe[:6]:
             affichage += e
+            
+
             # Colorisation en fonction du traie tiré
-            if e == "  ____      ____"+" \n":
-                self.label0.config(fg='cyan')
+#            if e == "  ____      ____"+" \n":
+#                self.label0.config(fg='cyan')
+                ### traçage du YANG
+#                self.canvas_tirage.create_line(20,40,40,40, width=4, fill="chartreuse")
+#                self.canvas_tirage.create_line(60,40,80,40, width=4, fill="chartreuse")
+            
+#            if e == "  ____________"+" \n" :
+#                self.label0.config(fg='blue')
+                ### traçage du YIN
+#                self.canvas_tirage.create_line(20,25,80,25, width=4, fill="chartreuse")
+            
+#            if e == "  ____  O  ____"+" \n" :
+#                self.label0.config(fg='pink')
+#                self.canvas_tirage.create_line(20,70,40,70, width=4, fill="darkorange")
+#                self.canvas_tirage.create_line(60,70,80,70, width=4, fill="darkorange")
 
-            if e == "  ____________"+" \n" :
-                self.label0.config(fg='blue')
+            
+#            if e == "  ____  X  ____"+" \n" :
+#                self.label0.config(fg='yellow')
+                ### traçage du VIEUX YIN
+#                self.canvas_tirage.create_line(20,55,80,55, width=4, fill="darkorange")       
 
-            if e == "  ____  O  ____"+" \n" :
-                self.label0.config(fg='pink')
-
-            if e == "  ____  X  ____"+" \n" :
-                self.label0.config(fg='yellow')
+################# COORDONEE POUR TIRAGE
+#        ### traçage du YIN
+#        self.canvas_tirage.create_line(20,25,80,25, width=4, fill="chartreuse")
+#        ### traçage du YANG
+#        self.canvas_tirage.create_line(20,40,40,40, width=4, fill="chartreuse")
+#        self.canvas_tirage.create_line(60,40,80,40, width=4, fill="chartreuse")
+#        ### traçage du VIEUX YIN
+#        self.canvas_tirage.create_line(20,55,80,55, width=4, fill="darkorange")        
+#        ### traçage du VIEUX YANG
+#        self.canvas_tirage.create_line(20,70,40,70, width=4, fill="darkorange")
+#        self.canvas_tirage.create_line(60,70,80,70, width=4, fill="darkorange")
+#
+#
+#        self.canvas_tirage.create_line(20,85,80,85, width=4, fill="chartreuse")
+#
+#        self.canvas_tirage.create_line(20,100,80,100, width=4, fill="chartreuse")
+            self.canvas_tirage.grid(row=4, column=0)
 
 
 
@@ -139,11 +221,68 @@ class Application(tk.Frame):
         # Création fenetre annexe pour basculer l'affichage
         # du tirage
         supra=""
-        for e in caglioListe:
+        compter=0
+        for e in caglioListe[:6]:
             supra += e
-        superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
-        self.label=tk.Label(superFenetre, text=supra,
-                bg="black", fg="chartreuse")
+            
+
+
+            if e == "  ____      ____"+" \n" and compter==0:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,25,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse")        
+            
+            if e == "  ____      ____"+" \n" and compter==1:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,40,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse") 
+            
+            if e == "  ____      ____"+" \n" and compter==2:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,55,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse") 
+            
+            if e == "  ____      ____"+" \n" and compter==3:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,55,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse") 
+            
+            if e == "  ____      ____"+" \n" and compter==4:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,55,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse") 
+            
+            if e == "  ____      ____"+" \n" and compter==5:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,55,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse") 
+            
+            if e == "  ____      ____"+" \n" and compter==5:
+                ### traçage du YANG
+                self.canvas_tirage.create_line(20,55,40,40,
+                        width=4, fill="chartreuse")
+                self.canvas_tirage.create_line(60,40,80,40,
+                        width=4, fill="chartreuse") 
+
+            compter += 1
+        
+        if self.bTest.get() == 0: 
+            superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
+            self.label=tk.Label(root, text=supra,
+                    bg="black", fg="chartreuse")
+
         self.label.pack()
         
         # mise à jour pied de page
@@ -164,6 +303,7 @@ class Application(tk.Frame):
 #            command=lambda x=1:Application.retourValeur(self,
 #                compteur))            
 #
+        Application.zelote = False        
         indice = Application.indice 
         Caglio.hexa(indice)
         # mise à jour pied de page
@@ -189,22 +329,24 @@ class Application(tk.Frame):
             self.chess1.pack(side='left', fill='both')
             compteur += 1 
 
-    def lanceurCommande(self):
-        Application.zelote = False
-
     
     
     def appel_tao(self):
+        """
+        Affichage d'une rivière d'hexagrames en transformation
+        """
         Caglio.riviere()
-        with open("tmp.tmp","r") as ff:
-            retour=ff.read()
-            self.label0.config(font=("Courier", 25)) 
-            self.tatatext1.set(retour)
-            self.tatatext2.set(".: Rivière de Tao :.")        
-            if Application.zelote == True:
+        Application.zelote = True
+        if Application.zelote == True:
+            with open("tmp.tmp","r") as ff:
+                retour=ff.read()
+                self.label0.config(font=("Courier", 25)) 
+                self.tatatext1.set(retour)
+                self.tatatext2.set(".: Rivière de Tao :.")        
                 self.after(250,self.appel_tao)
-      
+          
     def appel_tri(self):
+        Application.zelote = False        
         Caglio.tri()
         self.tatatext2.set(".: Liste des Trigrames :.")       
         caglioFichier1= open("tmp.tmp","r")
@@ -219,6 +361,15 @@ root = tk.Tk()
 root.title(' - TaoTéKing -')
 root["bg"]="black"
 root.geometry("800x600")
+
+### Mode fullscreen (snippet)
+root.attributes('-fullscreen', True)  
+root.bind("<F11>",
+                 lambda event: root.attributes("-fullscreen",
+                            not root.attributes("-fullscreen")))
+root.bind("<Escape>",
+                 lambda event: root.attributes("-fullscreen",
+                            False))
 app = Application(master=root)
 app.mainloop()
 
