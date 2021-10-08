@@ -66,7 +66,8 @@ class Application(tk.Frame):
 
         self.bTest = tk.IntVar()
 
-        # Création du menu deroulant pour l'onglet A Propos 
+
+        # Création du menu deroulant pour l'onglet Editer
         self.menuDeroulant2 = tk.Menu(self.menuEdit, tearoff = 0)
         self.menuDeroulant2.add_checkbutton(label='Verbeux', 
                 variable=self.bTest, onvalue=1, offvalue=0)
@@ -128,7 +129,7 @@ class Application(tk.Frame):
         self.label0 = tk.Label(root, textvariable=self.tatatext1 , 
                 bg="black", fg='#00ff3e', relief="ridge" , 
                 borderwidth=2 , font=self.font2)
-        self.label0.grid(row=6, column=0)
+        self.label0.grid(row=7, column=0)
     
     def creation_label2(self):
         """ Label l'entete """
@@ -218,6 +219,10 @@ class Application(tk.Frame):
             self.after(500)
             self.tatatext1.set(retour)
 
+        self.canvas_tirage2 = tk.Canvas(root, width=100, 
+                height=130, bg='black')
+        self.canvas_tirage2.grid(row=4, column=0)
+
         # Création fenetre annexe pour basculer l'affichage
         # du tirage
         supra=""
@@ -229,63 +234,70 @@ class Application(tk.Frame):
 
             if e == "  ____      ____"+" \n" and compter==0:
                 ### traçage du YANG
-                self.canvas_tirage.create_line(20,25,40,40,
+                self.canvas_tirage2 .create_line(20,25,40,40,
                         width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
+                self.canvas_tirage2 .create_line(60,40,80,40,
                         width=4, fill="chartreuse")        
             
             if e == "  ____      ____"+" \n" and compter==1:
                 ### traçage du YANG
-                self.canvas_tirage.create_line(20,40,40,40,
+                self.canvas_tirage2 .create_line(20,40,40,40,
                         width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
+                self.canvas_tirage2 .create_line(60,40,80,40,
                         width=4, fill="chartreuse") 
             
             if e == "  ____      ____"+" \n" and compter==2:
                 ### traçage du YANG
-                self.canvas_tirage.create_line(20,55,40,40,
+                self.canvas_tirage2.create_line(20,55,40,40,
                         width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
+                self.canvas_tirage2.create_line(60,40,80,40,
                         width=4, fill="chartreuse") 
             
             if e == "  ____      ____"+" \n" and compter==3:
                 ### traçage du YANG
-                self.canvas_tirage.create_line(20,55,40,40,
+                self.canvas_tirage2.create_line(20,55,40,40,
                         width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
+                self.canvas_tirage2.create_line(60,40,80,40,
                         width=4, fill="chartreuse") 
             
             if e == "  ____      ____"+" \n" and compter==4:
                 ### traçage du YANG
-                self.canvas_tirage.create_line(20,55,40,40,
+                self.canvas_tirage2.create_line(20,55,40,40,
                         width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
+                self.canvas_tirage2.create_line(60,40,80,40,
                         width=4, fill="chartreuse") 
             
             if e == "  ____      ____"+" \n" and compter==5:
                 ### traçage du YANG
-                self.canvas_tirage.create_line(20,55,40,40,
+                self.canvas_tirage2.create_line(20,55,40,40,
                         width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
+                self.canvas_tirage2.create_line(60,40,80,40,
                         width=4, fill="chartreuse") 
             
-            if e == "  ____      ____"+" \n" and compter==5:
-                ### traçage du YANG
-                self.canvas_tirage.create_line(20,55,40,40,
-                        width=4, fill="chartreuse")
-                self.canvas_tirage.create_line(60,40,80,40,
-                        width=4, fill="chartreuse") 
+
 
             compter += 1
+        self.canvas_tirage2.destroy()        
         
-        if self.bTest.get() == 0: 
-            superFenetre = tk.Toplevel(root, width=54, padx=2, pady=2)
-            self.label=tk.Label(root, text=supra,
-                    bg="black", fg="chartreuse")
+        self.test="Longue chaine de characteres"
+        print(supra)
+        if self.bTest.get() == 1: 
+            self.label1=tk.Label(root, textvariable=":::",
+                    bg="black", fg="chartreuse" ,relief="ridge" ,
+                    borderwidth=2 , font=self.font2)
+            self.label1.grid(row=5, column=0)
+            self.label2=tk.Label(root, textvariable=self.test,
+                    bg="black", fg="chartreuse" ,relief="ridge" ,
+                    borderwidth=2 , font=self.font2)
+            self.label2.grid(row=5, column=1)
+            ## SUPER instruction à connaitre :/ 
+            ## Mise à jour de l'affichage
+        self.label1.update_idletasks()
+        self.label2.update_idletasks()
 
-        self.label.pack()
-        
-        # mise à jour pied de page
+
+#            self.after(500)        
+        # mise à jour Entete 
         self.tatatext2.set(".: Oracle :.")        
 
 
