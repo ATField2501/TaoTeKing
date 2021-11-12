@@ -143,10 +143,10 @@ class Application(tk.Frame):
 
 
 
-    ######################## action des commandes
+    ########## Commandes
     def appel_oracle(self):
         """ COMMANDE """
-        Source.Appel_oracle(self, Caglio, Application)
+        Source.Appel_oracle(self, Caglio, Application, tk, root)
 
 
     ## methode apppelé par les 64 boutons pour pouvoir renvoyer
@@ -157,9 +157,7 @@ class Application(tk.Frame):
     def hexagrame(self):
         """ COMMANDE """
         Source.Hexagrame(self, Caglio, Application , tk , root)
-
-    
-    
+  
     def appel_tao(self):
         """ COMMANDE """
         Source.Appel_tao(self, Caglio, Application)

@@ -17,20 +17,22 @@ def Appel_tao(self, Caglio, Application):
             self.label0.config(font=("Courier", 25)) 
             self.tatatext1.set(retour)
             self.tatatext2.set(".: Rivière de Tao :.")        
-            self.after(250,self.appel_tao)
+            while Application.zelote:
+                self.after(250,self.appel_tao)
 
 def Appel_tri(self, Caglio, Appication):
     """ Fonction d'appel de la liste des trigrames """    
 #    Application.zelote = False        
     Caglio.tri()
-    self.tatatext2.set(".: Liste des Trigrames :.")       
+    self.tatatext2.set(".: Liste des Trigrames :.")      
+    self.label0.config(font=('Liberation Serif', 25), justify='left') 
     caglioFichier1= open("tmp.tmp","r")
     retour= caglioFichier1.read()
     self.tatatext1.set(retour)
     caglioFichier1.close()
 
 
-def Appel_oracle(self, Caglio, Application):
+def Appel_oracle(self, Caglio, Application, tk , root):
     """
     Appel de la méthode Oracle de la classe Cagliostro
     et mise à jour du canvas et des labels
